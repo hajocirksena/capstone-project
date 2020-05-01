@@ -1,0 +1,26 @@
+[
+  {
+    "item": " Schlüsselbund",
+    "description": "Alle meine Schlüssel! Dieses Schlüsselbund ist sehr wichtig für mich. Lieber Finder, bitte melde dich bei mir!",
+    "mail": " schreibe@hier.de",
+    "id": "1",
+    "image": "./images/Schlüsselbund.png",
+    "qr": "./images/qrcode.png"
+  },
+  {
+    "item": " Hund",
+    "description": "Oh nein, der kleine Drago ist abgehauen... Bitte melde dich bei mir und bringe Drago zurück zu seiner Familie!",
+    "mail": " schreibe@dragofam.de",
+    "id": "2",
+    "image": "./images/Hund.png",
+    "qr": "./images/qrcode.png"
+  },
+  {
+    "item": " Handy",
+    "description": "Mein Handy, mein Handy! Ich Schussel hab mein Iphone 30X verloren. Bitte sei doch so lieb, melde Dich bei mir und gib es mir zurück! Ich belohne dich mit einer Kugel Eis!",
+    "mail": " Iphone@weg.de",
+    "id": "3",
+    "image": "./images/Handy.png",
+    "qr": "./images/qrcode.png"
+  }
+]
