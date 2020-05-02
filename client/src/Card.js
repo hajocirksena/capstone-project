@@ -8,7 +8,7 @@ export default function Cards() {
       <Wrapper>
         {cardContent.map(el => (
           <div key={el.id}>
-            <CardStyled background={el.image}>
+            <CardStyled image={`url(${el.image})`}>
               <TitleStyled>{el.item}</TitleStyled>
               <TextStyled>{el.description}</TextStyled>
               <TextSmallStyled>
@@ -16,13 +16,7 @@ export default function Cards() {
                 unter {el.mail} zu erreichen.
               </TextSmallStyled>
               <ImageStyled>
-                <img
-                  src={el.image}
-                  height="120px"
-                  min-width="100px"
-                  alt={el.item}
-                />
-                <img src={el.qr} height="120px" min-width="100px" alt={el.qr} />
+                <img src={el.qr} height="80px" alt={el.qr} />
               </ImageStyled>
             </CardStyled>
           </div>
@@ -35,20 +29,9 @@ export default function Cards() {
 const ImageStyled = styled.div`
   display: flex;
   justify-content: space-evenly;
+  margin: 0.5em;
 `
 
-const CardStyled = styled.div`
-  position: relative;
-  top: 20%;
-  padding: 10px;
-  margin: 5px;
-  height: 430px;
-  width: 340px;
-  background: rgb(176, 224, 230);
-  border-radius: 4px;
-  box-shadow: 1px 3px 15px grey;
-  overflow: scroll;
-`
 const TextSmallStyled = styled.p`
   font-size: 0.8em;
   padding: 4px;
@@ -57,17 +40,40 @@ const TextStyled = styled.p`
   font-size: 1.2em;
   padding: 4px;
 `
-
 const TitleStyled = styled.h2`
   font-family: sans-serif;
-  font-size: 1.8em;
+  font-size: 2em;
   text-align: left;
-  margin: 3em 1em 1em 0;
+  margin: 3.5em 1em 0.8em 4px;
 `
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-wrap: nowrap;
   height: 100vh;
   overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+`
+
+const CardStyled = styled.div`
+  position: relative;
+  top: 20%;
+  padding: 10px;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  background-image: linear-gradient(
+      to bottom left,
+      rgba(245, 246, 252, 0.45),
+      white
+    ),
+    ${props => props.image};
+  background-size: cover;
+  width: 90vw;
+  height: 70vh;
+  color: black;
+  border-radius: 4px;
+  box-shadow: 10px 5px 15px darkgray;
+  scroll-snap-align: center;
+
+  overflow: scroll;
 `
