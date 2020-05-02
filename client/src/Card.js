@@ -2,14 +2,14 @@ import React from 'react'
 import cardContent from './CardContent.json'
 import styled from 'styled-components'
 
-export default function cards() {
+export default function Cards() {
   return (
     <>
       <Wrapper>
         {cardContent.map(el => (
           <div key={el.id}>
-            <CardStyled>
-              <TitelStyled>{el.item}</TitelStyled>
+            <CardStyled background={el.image}>
+              <TitleStyled>{el.item}</TitleStyled>
               <TextStyled>{el.description}</TextStyled>
               <TextSmallStyled>
                 Sollte dein {el.item} gefunden werden bist du für den Finder
@@ -46,25 +46,28 @@ const CardStyled = styled.div`
   width: 340px;
   background: rgb(176, 224, 230);
   border-radius: 4px;
-  box-shadow: 2px 3px 15px grey;
+  box-shadow: 1px 3px 15px grey;
+  overflow: scroll;
 `
 const TextSmallStyled = styled.p`
   font-size: 0.8em;
+  padding: 4px;
 `
 const TextStyled = styled.p`
   font-size: 1.2em;
+  padding: 4px;
 `
 
-const TitelStyled = styled.h2`
+const TitleStyled = styled.h2`
   font-family: sans-serif;
   font-size: 1.8em;
   text-align: left;
+  margin: 3em 1em 1em 0;
 `
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  background: beige;
-  border-radius: 25px;
+  height: 100vh;
   overflow-x: scroll;
 `
