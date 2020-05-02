@@ -15,6 +15,6 @@ export default createGlobalStyle`
 
     #root {
     display: grid; 
-    background: #e3e0de;  
+    background: rgb(245, 246, 252, );
   }
   `

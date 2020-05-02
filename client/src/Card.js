@@ -42,7 +42,7 @@ const TextStyled = styled.p`
 `
 const TitleStyled = styled.h2`
   font-family: sans-serif;
-  font-size: 2em;
+  font-size: 2.5em;
   text-align: left;
   margin: 3.5em 1em 0.8em 4px;
 `
@@ -74,6 +74,5 @@ const CardStyled = styled.div`
   border-radius: 4px;
   box-shadow: 10px 5px 15px darkgray;
   scroll-snap-align: center;
-
   overflow: scroll;
 `
