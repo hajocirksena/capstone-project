@@ -1,6 +1,6 @@
 import React from 'react'
-import cardContent from './CardContent.json'
 import styled from 'styled-components'
+import cardContent from './CardContent.json'
 
 export default function Cards() {
   return (
@@ -15,56 +15,70 @@ export default function Cards() {
                 Sollte dein {el.item} gefunden werden bist du für den Finder
                 unter {el.mail} zu erreichen.
               </TextSmallStyled>
-              <ImageStyled>
-                <img src={el.qr} height="80px" alt={el.qr} />
-              </ImageStyled>
+              <QrStyled>
+                <img
+                  src="http://api.qrserver.com/v1/create-qr-code/?data=www.thisimystuff.de&amp;size=70x70"
+                  alt={el.item}
+                  title={el.item}
+                />
+              </QrStyled>
             </CardStyled>
           </div>
         ))}
       </Wrapper>
+      <></>
     </>
   )
 }
 
-const ImageStyled = styled.div`
+const QrStyled = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  margin: 0.5em;
+  justify-content: center;
+  margin: 1em;
 `
 
 const TextSmallStyled = styled.p`
   font-size: 0.8em;
   padding: 4px;
+  color: rgb(38, 38, 38);
+  margin-right: 10em;
 `
 const TextStyled = styled.p`
-  font-size: 1.2em;
+  font-size: 1.3em;
+  color: rgb(38, 38, 38);
   padding: 4px;
+  margin-right: 4em;
+  margin-top: 2em;
+  font-family: sans-serif;
+  text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
 `
 const TitleStyled = styled.h2`
-  font-family: sans-serif;
+  font-family: Roboto;
+  color: rgb(38, 38, 38);
   font-size: 2.5em;
   text-align: left;
-  margin: 3.5em 1em 0.8em 4px;
+  margin: 1em 1em 0.8em 4px;
+  text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
 `
 
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: nowrap;
-  height: 100vh;
+  height: 91vh;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
 `
 
 const CardStyled = styled.div`
   position: relative;
-  top: 20%;
+  top: 5%;
   padding: 10px;
   margin-left: 5vw;
   margin-right: 5vw;
   background-image: linear-gradient(
       to bottom left,
       rgba(245, 246, 252, 0.45),
-      white
+      #b0d1d1
     ),
     ${props => props.image};
   background-size: cover;

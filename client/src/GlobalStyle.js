@@ -15,6 +15,9 @@ export default createGlobalStyle`
 
     #root {
     display: grid; 
+    grid-template-rows: 9vh auto;
+    overflow: scroll;
+    height: 100vh;
     background: rgb(245, 246, 252, );
   }
   `
