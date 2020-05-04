@@ -16,7 +16,7 @@ const HeaderFrame = styled.span`
   height: 8vh;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom left, #95c1c1, #bfdad9);
+  background: linear-gradient(to bottom left, white, #bfdad9);
   margin-right: 6vw;
   border-bottom-right-radius: 40px;
   box-shadow: 8px 3px 15px lightgray;
