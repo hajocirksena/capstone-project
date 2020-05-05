@@ -1,16 +1,16 @@
 import React from 'react'
-import Card from './Card'
+import Form from './Form'
 import { MemoryRouter as Router } from 'react-router-dom'
 
 export default {
-  title: 'Card',
-  component: Card,
+  title: 'Form',
+  component: Form,
 }
 
 export const simple = () => {
   return (
     <Router>
-      <Card />
+      <Form />
     </Router>
   )
 }

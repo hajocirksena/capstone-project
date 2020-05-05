@@ -8,13 +8,13 @@ export default createGlobalStyle`
 
     body {
         font-family: sans-serif;
-        display: grid;
-        height: 100%;
-
+        height: 100vh;
     }
 
     #root {
     display: grid; 
-    background: #e3e0de;  
+    grid-template-rows: 9vh auto;
+    height: 100vh;
+    background: rgb(245, 246, 252, );
   }
   `

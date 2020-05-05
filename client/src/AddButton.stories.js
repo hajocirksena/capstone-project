@@ -1,16 +1,16 @@
 import React from 'react'
-import Card from './Card'
+import AddButton from './AddButton'
 import { MemoryRouter as Router } from 'react-router-dom'
 
 export default {
-  title: 'Card',
-  component: Card,
+  title: 'AddButton',
+  component: AddButton,
 }
 
 export const simple = () => {
   return (
     <Router>
-      <Card />
+      <AddButton />
     </Router>
   )
 }

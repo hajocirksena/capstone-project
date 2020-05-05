@@ -1,11 +1,11 @@
 [
   {
     "item": " Schlüsselbund",
-    "description": "Alle meine Schlüssel! Dieses Schlüsselbund ist sehr wichtig für mich. Lieber Finder, bitte melde dich bei mir!",
+    "description": "Alle meine Schlüssel! Dieser Schlüsselbund ist sehr wichtig für mich. Lieber Finder, bitte melde dich bei mir!",
     "mail": " schreibe@hier.de",
     "id": "1",
     "image": "./images/Schlüsselbund.png",
-    "qr": "./images/qrcode.png"
+    "qr": "http://api.qrserver.com/v1/create-qr-code/?data=mailto:schreibe@hier.de"
   },
   {
     "item": " Hund",
@@ -13,7 +13,7 @@
     "mail": " schreibe@dragofam.de",
     "id": "2",
     "image": "./images/Hund.png",
-    "qr": "./images/qrcode.png"
+    "qr": "http://api.qrserver.com/v1/create-qr-code/?data=mailto:schreib@dragofam.de;"
   },
   {
     "item": " Handy",
@@ -21,6 +21,6 @@
     "mail": " Iphone@weg.de",
     "id": "3",
     "image": "./images/Handy.png",
-    "qr": "./images/qrcode.png"
+    "qr": "http://api.qrserver.com/v1/create-qr-code/?data=mailto:Iphone@weg.de"
   }
 ]
