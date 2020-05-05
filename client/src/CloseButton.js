@@ -6,7 +6,7 @@ export default function CloseButton({ onClick }) {
   return (
     <Button onClick={onClick}>
       <Link to="/">
-        <img src="./images/close.svg" height="30px" alt="close formular" />
+        <img src="./images/close.svg" alt="close formular" />
       </Link>
     </Button>
   )
@@ -14,12 +14,7 @@ export default function CloseButton({ onClick }) {
 
 const Button = styled.button`
   background: transparent;
-  color: darkgray;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-  box-shadow: 6px 1px 7px rgb(202, 230, 233);
+  width: 0;
+  height: 0;
+  border: none;
 `

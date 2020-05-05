@@ -1,9 +1,9 @@
 import React from 'react'
 import GlobalStyles from './GlobalStyle'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Card from './Card'
 import Header from './Header'
-import Formular from './Formular'
+import Card from './Card'
+import Form from './Form'
 import AddButton from './AddButton'
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
           <Card />
           <AddButton />
         </Route>
-        <Route path="/formular">
-          <Formular />
+        <Route path="/form">
+          <Form />
         </Route>
       </Switch>
     </Router>

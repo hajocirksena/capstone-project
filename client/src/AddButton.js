@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 export default function Button({ onClick }) {
   return (
     <AddButton onClick={onClick}>
-      <Link to="/formular">
-        <img src="./images/plus.svg" height="48px" alt="add card" />
+      <Link to="/form">
+        <img src="./images/plus.svg" alt="add card" />
       </Link>
     </AddButton>
   )
@@ -25,4 +25,5 @@ const AddButton = styled.button`
   border: none;
   border-radius: 50px;
   box-shadow: 6px 1px 7px grey;
+  background-size: cover;
 `

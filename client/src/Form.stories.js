@@ -1,16 +1,16 @@
 import React from 'react'
-import AddButton from './AddButton'
+import Form from './Form'
 import { MemoryRouter as Router } from 'react-router-dom'
 
 export default {
-  title: 'AddButton',
-  component: AddButton,
+  title: 'Form',
+  component: Form,
 }
 
 export const simple = () => {
   return (
     <Router>
-      <AddButton />
+      <Form />
     </Router>
   )
 }
