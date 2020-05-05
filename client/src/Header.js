@@ -19,7 +19,7 @@ const HeaderFrame = styled.span`
   background: linear-gradient(to bottom left, white, #bfdad9);
   margin-right: 6vw;
   border-bottom-right-radius: 40px;
-  box-shadow: 8px 3px 5px lightgray;
+  box-shadow: 3px 1px 3px lightgray;
 `
 const Name = styled.h2`
   font-family: OpenSans-Regular;

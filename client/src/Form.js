@@ -22,7 +22,7 @@ export default function Formular() {
           placeholder="Z.B.: Schlüssel, Handy..."
           ref={register({ required: true, maxLength: 150 })}
         />
-        {errors.item && <ErrorMsg>Gib deinem stuff einen Namen!</ErrorMsg>}
+        <ErrorMsg>{errors.item && <p>insert name!</p>}</ErrorMsg>
 
         <DescriptionLabel for="description">
           Beschreibe deinen stuff:
@@ -34,12 +34,9 @@ export default function Formular() {
           placeholder="Beschreibe deinen Artikel. Diese Info wird auch für den Finder sichtbar sein."
           ref={register({ required: true, maxLength: 150 })}
         />
-        {errors.description && (
-          <ErrorMsg>
-            Dieses Feld ist notwendig, aber bitte fasse Dich kurz. Max 200
-            Zeichen!
-          </ErrorMsg>
-        )}
+        <ErrorMsg className="errorDescription">
+          {errors.description && <p> insert description! up to 150 signs!</p>}
+        </ErrorMsg>
 
         <MailLabel for="mail">E-Mail:</MailLabel>
         <MailInput
@@ -49,9 +46,9 @@ export default function Formular() {
           placeholder="Unter dieser E-mail kann dich der Finder erreichen."
           ref={register({ required: true })}
         />
-        {errors.mail && (
-          <ErrorMsg>Bitte gebe eine gültige E-Mail ein!</ErrorMsg>
-        )}
+        <ErrorMsg className="errorMail">
+          {errors.mail && <p>insert e-mail</p>}
+        </ErrorMsg>
 
         <SubmitButton type="submit">Generate QR-Code</SubmitButton>
       </Form>
@@ -122,6 +119,10 @@ const MailInput = styled.input`
   border: none;
   border-bottom: 1px solid darkgray;
 `
+const ErrorMsg = styled.p`
+  font-size: 0.6em;
+  color: red;
+`
 
 const SubmitButton = styled.button`
   grid-row: 11;
@@ -143,9 +144,4 @@ const CardStyled = styled.div`
   color: black;
   border-radius: 4px;
   box-shadow: 10px 5px 15px darkgray;
-`
-const ErrorMsg = styled.span`
-  font-size: 0.6em;
-  color: red;
-  text-align: left;
 `

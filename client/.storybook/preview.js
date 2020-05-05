@@ -1,5 +1,5 @@
 import React from 'react'
-import { addDecorator } from '@storybook/react'
+import { addDecorator, addParameters } from '@storybook/react'
 import GlobalStyle from '../src/GlobalStyle'
 
 addDecorator(storyFn => (
@@ -8,3 +8,9 @@ addDecorator(storyFn => (
     {storyFn()}
   </>
 ))
+
+addParameters({
+  viewport: {
+    defaultViewport: 'iphone6',
+  },
+})
