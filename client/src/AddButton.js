@@ -18,4 +18,8 @@ const AddButton = styled.button`
   margin: auto;
   display: flex;
   border: none;
+  img {
+    width: 48px;
+    height: auto;
+  }
 `

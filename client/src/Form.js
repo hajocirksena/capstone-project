@@ -34,7 +34,7 @@ export default function Formular() {
           placeholder="Beschreibe deinen Artikel. Diese Info wird auch für den Finder sichtbar sein."
           ref={register({ required: true, maxLength: 150 })}
         />
-        <ErrorMsg className="errorDescription">
+        <ErrorMsg>
           {errors.description && <p> insert description! up to 150 signs!</p>}
         </ErrorMsg>
 
@@ -46,9 +46,14 @@ export default function Formular() {
           placeholder="Unter dieser E-mail kann dich der Finder erreichen."
           ref={register({ required: true })}
         />
-        <ErrorMsg className="errorMail">
-          {errors.mail && <p>insert e-mail</p>}
-        </ErrorMsg>
+        <ErrorMsg>{errors.mail && <p>insert e-mail</p>}</ErrorMsg>
+        <input
+          name="image"
+          id="image"
+          type="file"
+          accept="image"
+          capture="camera"
+        />
 
         <SubmitButton type="submit">Generate QR-Code</SubmitButton>
       </Form>
@@ -57,27 +62,23 @@ export default function Formular() {
 }
 
 const Form = styled.form`
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
 `
 const CloseButtonStyle = styled.button`
-  grid-row: 1;
-  grid-column: 5;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
   border: none;
   background: transparent;
 `
 
 const ItemLabel = styled.label`
-  grid-row: 1;
-  grid-column: 1/4;
   text-align: left;
   padding: 5px;
-  margin: 15px 5px 0px 5px;
+  margin: 15px 5px 0 5px;
 `
 const ItemInput = styled.input`
-  grid-row: 2;
-  grid-column: span 6;
   font-size: 0.8em;
   padding: 5px;
   margin: 5px;
@@ -86,48 +87,47 @@ const ItemInput = styled.input`
 `
 
 const DescriptionLabel = styled.label`
-  grid-row: 3;
-  grid-column: 1/6;
   text-align: left;
   padding: 5px;
-  margin: 10px 5px 5px 5px;
+  margin: 15px 5px 0 5px;
 `
 const DescriptionInput = styled.textarea`
-  grid-row: 4/6;
-  grid-column: span 6;
   font-family: sans-serif;
   font-size: 0.8em;
   padding: 5px;
   margin: 5px;
   border: none;
   box-shadow: 1px 2px 4px grey;
-  border-bottom: 1px solid darkgray;
+  height: 13vh;
 `
 
 const MailLabel = styled.label`
-  grid-row: 6;
   text-align: left;
   padding: 5px;
-  margin: 5px;
+  margin: 20px 5px 0 5px;
 `
 const MailInput = styled.input`
-  grid-row: 7;
-  grid-column: span 6;
   font-size: 0.8em;
   padding: 5px;
   margin: 5px;
   border: none;
   border-bottom: 1px solid darkgray;
 `
+// const Image = styled.input`
+//   height: 48px;
+//   border-radius: 10px;
+//   background: hotpink;
+// `
 const ErrorMsg = styled.p`
   font-size: 0.6em;
   color: red;
+  margin: 5px;
 `
 
 const SubmitButton = styled.button`
-  grid-row: 11;
-  grid-column: span 6;
-  font-size: 0.8em;
+  position: relative;
+  align-items: flex-end;
+  font-size: 1em;
   height: 2em;
   height: 48px;
   border-radius: 10px;

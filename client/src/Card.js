@@ -2,28 +2,25 @@ import React from 'react'
 import styled from 'styled-components'
 import cardContent from './CardContent.json'
 
-export default function Cards() {
+export default function Card() {
   return (
-    <>
-      <Wrapper>
-        {cardContent.map(el => (
-          <div key={el.id}>
-            <CardStyled image={`url(${el.image})`}>
-              <TitleStyled>{el.item}</TitleStyled>
-              <TextStyled>{el.description}</TextStyled>
-              <TextSmallStyled>
-                Sollte dein {el.item} gefunden werden bist du für den Finder
-                unter {el.mail} zu erreichen.
-              </TextSmallStyled>
-              <QrStyled>
-                <img src={el.qr} width="80px" height="80px" alt="QR-Code" />
-              </QrStyled>
-            </CardStyled>
-          </div>
-        ))}
-      </Wrapper>
-      <></>
-    </>
+    <Wrapper>
+      {cardContent.map(el => (
+        <div key={el.id}>
+          <CardStyled image={`url(${el.image})`}>
+            <TitleStyled>{el.item}</TitleStyled>
+            <TextStyled>{el.description}</TextStyled>
+            <TextSmallStyled>
+              Sollte dein {el.item} gefunden werden bist du für den Finder unter{' '}
+              {el.mail} zu erreichen.
+            </TextSmallStyled>
+            <QrStyled>
+              <img src={el.qr} alt="QR-Code" />
+            </QrStyled>
+          </CardStyled>
+        </div>
+      ))}
+    </Wrapper>
   )
 }
 
@@ -31,6 +28,10 @@ const QrStyled = styled.div`
   display: flex;
   justify-content: center;
   margin: 1em;
+  img {
+    width: 70px;
+    height: auto;
+  }
 `
 
 const TextSmallStyled = styled.p`
