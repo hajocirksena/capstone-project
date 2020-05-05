@@ -16,7 +16,7 @@ export default function Cards() {
                 unter {el.mail} zu erreichen.
               </TextSmallStyled>
               <QrStyled>
-                <img src={el.qr} width="80px" alt="QR-Code" />
+                <img src={el.qr} width="80px" height="80px" alt="QR-Code" />
               </QrStyled>
             </CardStyled>
           </div>
@@ -60,7 +60,6 @@ const TitleStyled = styled.h2`
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: nowrap;
-  /* height: 91vh; */
   padding-bottom: 30px;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
@@ -75,13 +74,12 @@ const CardStyled = styled.div`
   background-image: linear-gradient(
       to bottom left,
       rgba(245, 246, 252, 0.45),
-      #b0d1d1
+      rgb(202, 230, 233)
     ),
     ${props => props.image};
   background-size: cover;
   width: 90vw;
   height: 72vh;
-  color: black;
   border-radius: 4px;
   box-shadow: 10px 5px 15px darkgray;
   scroll-snap-align: center;

@@ -6,22 +6,23 @@ export default function Button({ onClick }) {
   return (
     <AddButton onClick={onClick}>
       <Link to="/formular">
-        <img src="./images/plus.svg" height="48px" />
+        <img src="./images/plus.svg" height="48px" alt="add card" />
       </Link>
     </AddButton>
   )
 }
 
 const AddButton = styled.button`
-  background: #95c1c1;
+  background: transparent;
   color: darkgray;
   margin: auto;
-  margin-bottom: 15px;
+  margin-bottom: 3vh;
   width: 60px;
   height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
   border-radius: 50px;
-  box-shadow: 0 6px 8px #0004;
+  box-shadow: 6px 1px 7px grey;
 `

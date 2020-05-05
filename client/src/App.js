@@ -1,6 +1,6 @@
 import React from 'react'
 import GlobalStyles from './GlobalStyle'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Card from './Card'
 import Header from './Header'
 import Formular from './Formular'
