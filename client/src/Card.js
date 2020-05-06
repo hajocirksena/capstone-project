@@ -30,7 +30,7 @@ const QrStyled = styled.div`
   margin: 1em;
   img {
     width: 70px;
-    height: 70px;
+    max-height: 70px;
     height: auto;
   }
 `

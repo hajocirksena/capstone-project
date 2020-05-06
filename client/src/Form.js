@@ -135,12 +135,12 @@ const SubmitButton = styled.button`
 
 const CardStyled = styled.div`
   position: relative;
-  top: 5%;
+  top: 2%;
   padding: 5px;
   margin-left: 5vw;
   margin-right: 5vw;
   width: 90vw;
-  height: 80vh;
+  height: 87vh;
   color: black;
   border-radius: 4px;
   box-shadow: 10px 5px 15px darkgray;

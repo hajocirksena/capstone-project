@@ -44,7 +44,13 @@ function ImageUploader() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <img src={image} style={{ width: '80px', maxHeight: '100px' }} alt="" />
+        <ImgStyle>
+          <img
+            src={image}
+            style={{ width: '80px', maxHeight: '100px' }}
+            alt=""
+          />
+        </ImgStyle>
       )}
     </>
   )
@@ -53,10 +59,10 @@ function ImageUploader() {
 const Wrapper = styled.div`
   display: inline-block;
   text-align: center;
-  padding: 12px;
+  padding: 9px;
   margin-left: 10px;
   width: 110px;
-  height: 40px;
+  height: 35px;
   overflow: hidden;
   position: relative;
   background: #bfdad9;
@@ -71,5 +77,10 @@ const Wrapper = styled.div`
     opacity: 0;
   }
 `
-
+const ImgStyle = styled.div`
+  max-width: 70px;
+  max-height: 60px;
+  height: auto;
+  margin: 10px 5px 5px 8%;
+`
 export default ImageUploader
