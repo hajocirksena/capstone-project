@@ -8,15 +8,6 @@ export default function Formular() {
   const { register, handleSubmit, errors } = useForm()
   const onSubmit = data => console.log(data)
 
-  // const { register } = useForm({
-  //   defaultValues: {
-  //     firstName: 'bill',
-  //     lastName: 'luo',
-  //     email: 'bluebill1049@hotmail.com',
-  //     pets: ['dog', 'cat'],
-  //   },
-  // })
-
   return (
     <CardStyled>
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -133,8 +124,9 @@ const ErrorMsg = styled.p`
 `
 
 const SubmitButton = styled.button`
-  position: relative;
-  align-items: flex-end;
+  position: absolute;
+  bottom: 2%;
+  left: 25%;
   font-size: 1em;
   height: 2em;
   height: 48px;
