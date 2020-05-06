@@ -2,10 +2,20 @@ import React from 'react'
 import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import CloseButton from './CloseButton'
+import ImageUpload from './ImageUpload'
 
 export default function Formular() {
   const { register, handleSubmit, errors } = useForm()
   const onSubmit = data => console.log(data)
+
+  // const { register } = useForm({
+  //   defaultValues: {
+  //     firstName: 'bill',
+  //     lastName: 'luo',
+  //     email: 'bluebill1049@hotmail.com',
+  //     pets: ['dog', 'cat'],
+  //   },
+  // })
 
   return (
     <CardStyled>
@@ -47,13 +57,15 @@ export default function Formular() {
           ref={register({ required: true })}
         />
         <ErrorMsg>{errors.mail && <p>insert e-mail</p>}</ErrorMsg>
-        <input
-          name="image"
+
+        <ImageUpload
+          for="image"
           id="image"
+          name="image"
           type="file"
-          accept="image"
-          capture="camera"
+          ref={register({ required: true })}
         />
+        <ErrorMsg>{errors.mail && <p>upload a pic</p>}</ErrorMsg>
 
         <SubmitButton type="submit">Generate QR-Code</SubmitButton>
       </Form>
@@ -113,11 +125,7 @@ const MailInput = styled.input`
   border: none;
   border-bottom: 1px solid darkgray;
 `
-// const Image = styled.input`
-//   height: 48px;
-//   border-radius: 10px;
-//   background: hotpink;
-// `
+
 const ErrorMsg = styled.p`
   font-size: 0.6em;
   color: red;

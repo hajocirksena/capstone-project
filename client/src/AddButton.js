@@ -16,6 +16,7 @@ const AddButton = styled.button`
   background: transparent;
   color: darkgray;
   margin: auto;
+  margin-bottom: 20px;
   display: flex;
   border: none;
   img {
