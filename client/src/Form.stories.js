@@ -27,7 +27,7 @@ export const errors = () => {
         ref={{ required: true, maxLength: 150 }}
       />
       {errors.item && <p>insert name!</p>}
-      <button type="submit">Generate QR-Code</button>
+      <button type="submit">Submit</button>
     </Router>
   )
 }

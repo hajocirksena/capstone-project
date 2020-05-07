@@ -21,9 +21,8 @@ function ImageUploader() {
     )
     const file = await res.json()
 
-    setImage(file.secure_url)
+    setImage(file.url)
     setLoading(false)
-    console.log(file.url)
   }
 
   return (
@@ -33,21 +32,21 @@ function ImageUploader() {
         <input
           type="file"
           name="image"
-          width="auto"
           accept="image/*"
-          capture="camera/*"
+          capture="camera"
           onChange={uploadImage}
           className="btn"
         />
       </Wrapper>
 
       {loading ? (
-        <p>Loading...</p>
+        <P>Loading...</P>
       ) : (
         <ImgStyle>
           <img
             src={image}
-            style={{ width: '80px', maxHeight: '100px' }}
+            id="image"
+            style={{ width: '80px', maxHeight: '120px' }}
             alt=""
           />
         </ImgStyle>
@@ -59,13 +58,14 @@ function ImageUploader() {
 const Wrapper = styled.div`
   display: inline-block;
   text-align: center;
-  padding: 9px;
-  margin-left: 10px;
+  padding: 5px;
+  margin-left: 7vw;
+  margin-top: 3vw;
   width: 110px;
-  height: 35px;
+  height: 1.7em;
   overflow: hidden;
   position: relative;
-  background: #bfdad9;
+  background: rgba(200, 227, 226);
   border-radius: 10px;
   box-shadow: 3px 1px 3px lightgray;
   border: 1px solid darkgray;
@@ -78,9 +78,16 @@ const Wrapper = styled.div`
   }
 `
 const ImgStyle = styled.div`
-  max-width: 70px;
-  max-height: 60px;
+  display: flex;
+  justify-content: center;
+  max-width: 110px;
+  max-height: 110px;
+  align-items: center;
   height: auto;
-  margin: 10px 5px 5px 8%;
+  margin: 2vh auto 5px auto;
+`
+
+const P = styled.p`
+  margin: 2vh 5px 5px 13vw;
 `
 export default ImageUploader
