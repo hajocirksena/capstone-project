@@ -9,16 +9,25 @@ export default function Formular() {
   const { register, handleSubmit, errors } = useForm()
   const onSubmit = data => console.log(data)
 
+  // const [imageUrl, setImageUrl] = useState('')
   const [itemData, setItemData] = useState({
     name: '',
     description: '',
     mail: '',
     image: '',
-    qrCode: '',
   })
+
+  // console.log(imageUrl)
+  console.log(itemData)
 
   function handleChange(event) {
     setItemData({ ...itemData, [event.target.name]: event.target.value })
+  }
+
+  function setImageUrl(url) {
+    console.log(url)
+
+    // setItemData({ ...itemData, [event.target.name]: event.target.value })
   }
 
   return (
@@ -71,15 +80,16 @@ export default function Formular() {
               name="image"
               id="image"
               type="file"
-              value="?"
-              onChange={handleChange}
+              value={itemData.image}
+              setImageUrl={setImageUrl}
+              // onChange={handleChange}
               ref={register({ required: true })}
             />
           </div>
 
           <QRCodeStyled>
             <QRCodeLabel>your code!</QRCodeLabel>
-            <QRCode name="QR-Code" value={itemData.mail} />
+            <QRCode name="QR-Code" value={JSON.stringify(itemData)} />
           </QRCodeStyled>
         </ImgSection>
 

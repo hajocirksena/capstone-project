@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import cardContent from './CardContent.json'
+import { QRCode } from 'react-qr-svg'
 
 export default function Card() {
   return (
@@ -15,7 +16,7 @@ export default function Card() {
               {el.mail} zu erreichen.
             </TextSmallStyled>
             <QrStyled>
-              <img src={el.qr} alt="QR-Code" />
+              <QRCode name="QR-Code" value={JSON.stringify(el)} />
             </QrStyled>
           </CardStyled>
         </div>
@@ -26,13 +27,9 @@ export default function Card() {
 
 const QrStyled = styled.div`
   display: flex;
-  justify-content: center;
-  margin: 1em;
-  img {
-    width: 70px;
-    max-height: 70px;
-    height: auto;
-  }
+  margin: 2em auto 2em auto;
+  width: 80px;
+  height: 80px;
 `
 
 const TextSmallStyled = styled.p`

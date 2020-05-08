@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-function ImageUploader() {
+function ImageUploader({ setImageUrl }) {
   const [image, setImage] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -22,6 +22,7 @@ function ImageUploader() {
     const file = await res.json()
 
     setImage(file.url)
+    setImageUrl(file.url)
     setLoading(false)
   }
 
