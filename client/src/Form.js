@@ -6,10 +6,8 @@ import ImageUpload from './ImageUpload'
 import { QRCode } from 'react-qr-svg'
 
 export default function Formular() {
-  const { register, handleSubmit, errors } = useForm()
-  const onSubmit = data => console.log(data)
+  const { register, errors, handleSubmit } = useForm()
 
-  // const [imageUrl, setImageUrl] = useState('')
   const [itemData, setItemData] = useState({
     name: '',
     description: '',
@@ -17,22 +15,16 @@ export default function Formular() {
     image: '',
   })
 
-  // console.log(imageUrl)
-  console.log(itemData)
-
   function handleChange(event) {
     setItemData({ ...itemData, [event.target.name]: event.target.value })
   }
-
   function setImageUrl(url) {
-    console.log(url)
-
-    // setItemData({ ...itemData, [event.target.name]: event.target.value })
+    setItemData({ ...itemData, image: url })
   }
 
   return (
     <CardStyled>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit()}>
         <CloseButtonStyle>
           <CloseButton />
         </CloseButtonStyle>
@@ -82,7 +74,6 @@ export default function Formular() {
               type="file"
               value={itemData.image}
               setImageUrl={setImageUrl}
-              // onChange={handleChange}
               ref={register({ required: true })}
             />
           </div>
