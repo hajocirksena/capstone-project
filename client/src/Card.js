@@ -1,36 +1,41 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import cardContent from './CardContent.json'
+import { QRCode } from 'react-qr-svg'
 
-export default function Cards() {
+export default function Card() {
+  const [items, setItems] = useState([])
+  useEffect(() => {
+    fetch('http://localhost:8050/items')
+      .then(response => response.json())
+      .then(data => setItems(data.reverse()))
+  }, [])
+
   return (
-    <>
-      <Wrapper>
-        {cardContent.map(el => (
-          <div key={el.id}>
-            <CardStyled image={`url(${el.image})`}>
-              <TitleStyled>{el.item}</TitleStyled>
-              <TextStyled>{el.description}</TextStyled>
-              <TextSmallStyled>
-                Sollte dein {el.item} gefunden werden bist du für den Finder
-                unter {el.mail} zu erreichen.
-              </TextSmallStyled>
-              <QrStyled>
-                <img src={el.qr} width="80px" height="80px" alt="QR-Code" />
-              </QrStyled>
-            </CardStyled>
-          </div>
-        ))}
-      </Wrapper>
-      <></>
-    </>
+    <Wrapper>
+      {items.map(el => (
+        <div key={el.id}>
+          <CardStyled image={`url(${el.image})`}>
+            <TitleStyled>{el.item}</TitleStyled>
+            <TextStyled>{el.description}</TextStyled>
+            <TextSmallStyled>
+              Sollte dein {el.item} gefunden werden bist du für den Finder unter{' '}
+              {el.mail} zu erreichen.
+            </TextSmallStyled>
+            <QrStyled>
+              <QRCode name="QR-Code" value={JSON.stringify(el)} />
+            </QrStyled>
+          </CardStyled>
+        </div>
+      ))}
+    </Wrapper>
   )
 }
 
 const QrStyled = styled.div`
   display: flex;
-  justify-content: center;
-  margin: 1em;
+  margin: 2em auto 2em auto;
+  width: 80px;
+  height: 80px;
 `
 
 const TextSmallStyled = styled.p`
@@ -40,7 +45,7 @@ const TextSmallStyled = styled.p`
   margin-right: 10em;
 `
 const TextStyled = styled.p`
-  font-size: 1.3em;
+  font-size: 1.2em;
   color: rgb(38, 38, 38);
   padding: 4px;
   margin-right: 4em;
@@ -79,7 +84,7 @@ const CardStyled = styled.div`
     ${props => props.image};
   background-size: cover;
   width: 90vw;
-  height: 72vh;
+  height: 75vh;
   border-radius: 4px;
   box-shadow: 10px 5px 15px darkgray;
   scroll-snap-align: center;

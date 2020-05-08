@@ -17,4 +17,8 @@ const Button = styled.button`
   width: 0;
   height: 0;
   border: none;
+  img {
+    width: 30px;
+    height: auto;
+  }
 `
