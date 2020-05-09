@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import CloseButton from './CloseButton'
@@ -22,13 +22,33 @@ export default function Formular() {
     setItemData({ ...itemData, image: url })
   }
 
+  function uploadData(itemData) {
+    const headers = new Headers()
+    headers.append('Content-Type', 'application/x-www-form-urlencoded')
+
+    // const urlencoded = new URLSearchParams()
+    // urlencoded.append('itemData', itemData)
+
+    const request = {
+      method: 'POST',
+      headers: headers,
+      body: itemData,
+      redirect: 'follow',
+    }
+
+    fetch('http://localhost:8050/items/', request)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error))
+  }
+
   return (
     <CardStyled>
       <Form onSubmit={handleSubmit()}>
         <CloseButtonStyle>
           <CloseButton />
         </CloseButtonStyle>
-        <ItemLabel for="name">Wie heißt dein stuff?</ItemLabel>
+        <LabelStyled for="name">Wie heißt dein stuff?</LabelStyled>
         <ItemInput
           name="name"
           id="name"
@@ -39,9 +59,7 @@ export default function Formular() {
           ref={register({ required: true, maxLength: 150 })}
         />
         <ErrorMsg>{errors.item && <p>insert name!</p>}</ErrorMsg>
-        <DescriptionLabel for="description">
-          Beschreibe deinen stuff:
-        </DescriptionLabel>
+        <LabelStyled for="description">Beschreibe deinen stuff:</LabelStyled>
         <DescriptionInput
           name="description"
           id="description"
@@ -54,7 +72,7 @@ export default function Formular() {
         <ErrorMsg>
           {errors.description && <p> insert description! up to 150 signs!</p>}
         </ErrorMsg>
-        <MailLabel for="mail">E-Mail:</MailLabel>
+        <LabelStyled for="mail">E-Mail:</LabelStyled>
         <MailInput
           name="mail"
           id="mail"
@@ -83,12 +101,17 @@ export default function Formular() {
             <QRCode name="QR-Code" value={JSON.stringify(itemData)} />
           </QRCodeStyled>
         </ImgSection>
-
-        <SubmitButton type="submit">Submit</SubmitButton>
+        <SubmitButton
+          type="submit"
+          onClick={() => uploadData(JSON.stringify(itemData))}
+        >
+          Submit
+        </SubmitButton>
       </Form>
     </CardStyled>
   )
 }
+
 const ImgSection = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -128,7 +151,7 @@ const CloseButtonStyle = styled.button`
   background: transparent;
 `
 
-const ItemLabel = styled.label`
+const LabelStyled = styled.label`
   text-align: left;
   padding: 5px;
   margin: 15px 5px 0 5px;
@@ -141,11 +164,6 @@ const ItemInput = styled.input`
   border-bottom: 1px solid darkgray;
 `
 
-const DescriptionLabel = styled.label`
-  text-align: left;
-  padding: 5px;
-  margin: 15px 5px 0 5px;
-`
 const DescriptionInput = styled.textarea`
   font-family: sans-serif;
   font-size: 0.8em;
@@ -156,11 +174,6 @@ const DescriptionInput = styled.textarea`
   height: 13vh;
 `
 
-const MailLabel = styled.label`
-  text-align: left;
-  padding: 5px;
-  margin: 20px 5px 0 5px;
-`
 const MailInput = styled.input`
   font-size: 0.8em;
   padding: 5px;

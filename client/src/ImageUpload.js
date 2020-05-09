@@ -41,7 +41,7 @@ function ImageUploader({ setImageUrl }) {
       </Wrapper>
 
       {loading ? (
-        <P>Loading...</P>
+        <StyledText>Loading...</StyledText>
       ) : (
         <ImgStyle>
           <img
@@ -88,7 +88,7 @@ const ImgStyle = styled.div`
   margin: 2vh auto 5px auto;
 `
 
-const P = styled.p`
+const StyledText = styled.p`
   margin: 2vh 5px 5px 13vw;
 `
 export default ImageUploader

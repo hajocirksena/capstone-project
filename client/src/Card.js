@@ -15,10 +15,10 @@ export default function Card() {
       {items.map(el => (
         <div key={el.id}>
           <CardStyled image={`url(${el.image})`}>
-            <TitleStyled>{el.item}</TitleStyled>
+            <TitleStyled>{el.name}</TitleStyled>
             <TextStyled>{el.description}</TextStyled>
             <TextSmallStyled>
-              Sollte dein {el.item} gefunden werden bist du für den Finder unter{' '}
+              Sollte dein {el.name} gefunden werden bist du für den Finder unter
               {el.mail} zu erreichen.
             </TextSmallStyled>
             <QrStyled>
@@ -33,7 +33,7 @@ export default function Card() {
 
 const QrStyled = styled.div`
   display: flex;
-  margin: 2em auto 2em auto;
+  margin: 2em auto;
   width: 80px;
   height: 80px;
 `
