@@ -6,7 +6,7 @@ const router = Router();
 mongoose.connect("mongodb://localhost:27017/thisismystuff");
 
 const items = mongoose.model("items", {
-  item: {
+  name: {
     type: String,
   },
   description: {
@@ -26,10 +26,10 @@ router.get("/", (request, response) => {
   });
 });
 
-router.post("/add", (request, response) => {
+router.post("/", (request, response) => {
   items
     .create({
-      item: request.body.item,
+      name: request.body.name,
       description: request.body.description,
       mail: request.body.mail,
       image: request.body.image,
