@@ -42,12 +42,7 @@ function ImageUploader({ setImageUrl }) {
           <StyledText>Loading...</StyledText>
         ) : (
           <ImgStyle>
-            <img
-              src={image}
-              id="image"
-              style={{ width: '80px', maxHeight: '120px' }}
-              alt=""
-            />
+            <img src={image} id="image" alt="" />
           </ImgStyle>
         )}
       </Wrapper>
@@ -85,6 +80,10 @@ const ImgStyle = styled.div`
   max-height: 112px;
   height: auto;
   margin: 2vh auto 5px auto;
+  img {
+    width: 80px;
+    max-height: 120px;
+  }
 `
 
 const StyledText = styled.p`

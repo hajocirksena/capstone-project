@@ -19,11 +19,11 @@ export default function Card() {
             <TextStyled>{el.description}</TextStyled>
             <TextSmallStyled>
               Sollte dein stuff gefunden werden bist du für den Finder per Mail
-              an {el.mail} zu erreichen.
+              über {el.mail} zu erreichen.
             </TextSmallStyled>
-            <QrStyled>
+            <QRStyled>
               <QRCode name="QR-Code" value={JSON.stringify(el._id)} />
-            </QrStyled>
+            </QRStyled>
           </CardStyled>
         </div>
       ))}
@@ -31,7 +31,7 @@ export default function Card() {
   )
 }
 
-const QrStyled = styled.div`
+const QRStyled = styled.div`
   position: absolute;
   bottom: 5%;
   left: 38%;
