@@ -14,13 +14,17 @@ export default function Button({ onClick }) {
 
 const AddButton = styled.button`
   background: transparent;
-  color: darkgray;
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 1.3vh;
   display: flex;
   border: none;
+  border-radius: 50px;
   img {
-    width: 48px;
+    width: 50px;
     height: auto;
+    padding: 4px;
+  }
+  :active {
+    background: rgb(211, 245, 243);
   }
 `

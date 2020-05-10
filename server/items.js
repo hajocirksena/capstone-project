@@ -5,7 +5,7 @@ const router = Router();
 
 mongoose.connect("mongodb://localhost:27017/thisismystuff");
 
-const items = mongoose.model("items", {
+const items = mongoose.model("Item", {
   name: {
     type: String,
   },
