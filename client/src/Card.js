@@ -15,15 +15,15 @@ export default function Card() {
       {items.map(el => (
         <div key={el.id}>
           <CardStyled image={`url(${el.image})`}>
-            <TitleStyled>{el.item}</TitleStyled>
+            <TitleStyled>{el.name}</TitleStyled>
             <TextStyled>{el.description}</TextStyled>
             <TextSmallStyled>
-              Sollte dein {el.item} gefunden werden bist du für den Finder unter{' '}
-              {el.mail} zu erreichen.
+              Sollte dein stuff gefunden werden bist du für den Finder per Mail
+              über {el.mail} zu erreichen.
             </TextSmallStyled>
-            <QrStyled>
-              <QRCode name="QR-Code" value={JSON.stringify(el)} />
-            </QrStyled>
+            <QRStyled>
+              <QRCode name="QR-Code" value={JSON.stringify(el._id)} />
+            </QRStyled>
           </CardStyled>
         </div>
       ))}
@@ -31,9 +31,10 @@ export default function Card() {
   )
 }
 
-const QrStyled = styled.div`
-  display: flex;
-  margin: 2em auto 2em auto;
+const QRStyled = styled.div`
+  position: absolute;
+  bottom: 5%;
+  left: 38%;
   width: 80px;
   height: 80px;
 `
@@ -42,14 +43,13 @@ const TextSmallStyled = styled.p`
   font-size: 0.8em;
   padding: 4px;
   color: rgb(38, 38, 38);
-  margin-right: 10em;
+  margin: 4vh 20vw 2vh 0;
 `
 const TextStyled = styled.p`
-  font-size: 1.2em;
+  font-size: 1.3em;
   color: rgb(38, 38, 38);
-  padding: 4px;
-  margin-right: 4em;
-  margin-top: 2em;
+  padding: 6px;
+  margin-top: 1.5vh;
   font-family: sans-serif;
   text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
 `
@@ -58,7 +58,7 @@ const TitleStyled = styled.h2`
   color: rgb(38, 38, 38);
   font-size: 2.5em;
   text-align: left;
-  margin: 1em 1em 0.8em 4px;
+  margin: 16vh 0 0 0;
   text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
 `
 
@@ -74,11 +74,10 @@ const CardStyled = styled.div`
   position: relative;
   top: 5%;
   padding: 10px;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  margin: 0 5vw;
   background-image: linear-gradient(
       to bottom left,
-      rgba(245, 246, 252, 0.45),
+      rgba(245, 246, 252, 0.78),
       rgb(202, 230, 233)
     ),
     ${props => props.image};

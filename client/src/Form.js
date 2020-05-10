@@ -4,9 +4,10 @@ import { useForm } from 'react-hook-form'
 import CloseButton from './CloseButton'
 import ImageUpload from './ImageUpload'
 import { QRCode } from 'react-qr-svg'
+import { Link } from 'react-router-dom'
 
 export default function Formular() {
-  const { register, errors, handleSubmit } = useForm()
+  const { register, errors } = useForm()
 
   const [itemData, setItemData] = useState({
     name: '',
@@ -22,13 +23,30 @@ export default function Formular() {
     setItemData({ ...itemData, image: url })
   }
 
+  function uploadData(itemData) {
+    const headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+
+    const request = {
+      method: 'POST',
+      headers: headers,
+      body: itemData,
+      redirect: 'follow',
+    }
+
+    fetch('http://localhost:8050/items/', request)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error))
+  }
+
   return (
     <CardStyled>
-      <Form onSubmit={handleSubmit()}>
+      <Form>
         <CloseButtonStyle>
           <CloseButton />
         </CloseButtonStyle>
-        <ItemLabel for="name">Wie heißt dein stuff?</ItemLabel>
+        <LabelStyledName for="name">Wie heißt dein stuff?</LabelStyledName>
         <ItemInput
           name="name"
           id="name"
@@ -38,10 +56,8 @@ export default function Formular() {
           placeholder="Z.B.: Schlüssel, Handy..."
           ref={register({ required: true, maxLength: 150 })}
         />
-        <ErrorMsg>{errors.item && <p>insert name!</p>}</ErrorMsg>
-        <DescriptionLabel for="description">
-          Beschreibe deinen stuff:
-        </DescriptionLabel>
+        <ErrorMsg>{errors.name && <p>insert name!</p>}</ErrorMsg>
+        <LabelStyled for="description">Beschreibe deinen stuff:</LabelStyled>
         <DescriptionInput
           name="description"
           id="description"
@@ -54,7 +70,7 @@ export default function Formular() {
         <ErrorMsg>
           {errors.description && <p> insert description! up to 150 signs!</p>}
         </ErrorMsg>
-        <MailLabel for="mail">E-Mail:</MailLabel>
+        <LabelStyled for="mail">E-Mail:</LabelStyled>
         <MailInput
           name="mail"
           id="mail"
@@ -83,25 +99,31 @@ export default function Formular() {
             <QRCode name="QR-Code" value={JSON.stringify(itemData)} />
           </QRCodeStyled>
         </ImgSection>
-
-        <SubmitButton type="submit">Submit</SubmitButton>
+        <SubmitButton
+          type="submit"
+          onClick={() => uploadData(JSON.stringify(itemData))}
+        >
+          <Link to="/" className="Link">
+            register your stuff
+          </Link>
+        </SubmitButton>
       </Form>
     </CardStyled>
   )
 }
+
 const ImgSection = styled.div`
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   height: 28vh;
   width: 100%;
+  justify-content: space-evenly;
 `
 const QRCodeLabel = styled.section`
   display: inline-block;
   text-align: center;
-  padding: 5px;
-  margin: 3vw 7vw 20px 0;
-  width: 110px;
+  padding: 4px;
+  margin: 2vh 7vw 12px 0;
+  width: 112px;
   height: 1.7em;
   background: rgba(200, 227, 226);
   border-radius: 10px;
@@ -109,11 +131,7 @@ const QRCodeLabel = styled.section`
   border: 1px solid darkgray;
 `
 const QRCodeStyled = styled.div`
-  position: absolute;
-  margin-left: 180px;
-  width: 110px;
-  grid-row: 2;
-  grid-column: 2;
+  width: 112px;
 `
 
 const Form = styled.form`
@@ -123,48 +141,44 @@ const Form = styled.form`
 const CloseButtonStyle = styled.button`
   display: flex;
   justify-content: flex-end;
-  margin-right: 20px;
+  margin: 8px;
   border: none;
   background: transparent;
 `
 
-const ItemLabel = styled.label`
+const LabelStyledName = styled.label`
+  position: absolute;
+  margin: 0 0 0 4px;
+  top: 32px;
+  left: 8px;
+`
+const LabelStyled = styled.label`
   text-align: left;
-  padding: 5px;
-  margin: 15px 5px 0 5px;
+  padding: 4px;
+  margin: 16px 4px 0 4px;
 `
 const ItemInput = styled.input`
   font-size: 0.8em;
-  padding: 5px;
-  margin: 5px;
+  padding: 0 4px;
+  margin: 12px 4px;
   border: none;
   border-bottom: 1px solid darkgray;
 `
 
-const DescriptionLabel = styled.label`
-  text-align: left;
-  padding: 5px;
-  margin: 15px 5px 0 5px;
-`
 const DescriptionInput = styled.textarea`
   font-family: sans-serif;
   font-size: 0.8em;
-  padding: 5px;
-  margin: 5px;
+  padding: 4px;
+  margin: 4px;
   border: none;
   box-shadow: 1px 2px 4px grey;
   height: 13vh;
 `
 
-const MailLabel = styled.label`
-  text-align: left;
-  padding: 5px;
-  margin: 20px 5px 0 5px;
-`
 const MailInput = styled.input`
   font-size: 0.8em;
-  padding: 5px;
-  margin: 5px;
+  padding: 4px;
+  margin: 4px;
   border: none;
   border-bottom: 1px solid darkgray;
 `
@@ -172,7 +186,7 @@ const MailInput = styled.input`
 const ErrorMsg = styled.p`
   font-size: 0.6em;
   color: red;
-  margin: 5px;
+  margin: 4px;
 `
 
 const SubmitButton = styled.button`
@@ -182,17 +196,25 @@ const SubmitButton = styled.button`
   font-size: 1em;
   height: 2em;
   width: 87vw;
-  border-radius: 10px;
+  border-radius: 12px;
   background: rgba(200, 227, 226);
   border-radius: 10px;
-  box-shadow: 3px 1px 3px lightgray;
+  box-shadow: 4px 1px 4px lightgray;
   border: 1px solid darkgray;
+  .Link {
+    text-decoration: none;
+    color: black;
+    padding: 4px 85px;
+  }
+  :active {
+    background: rgb(211, 245, 243);
+  }
 `
 
 const CardStyled = styled.div`
   position: relative;
   top: 2%;
-  padding: 5px;
+  padding: 4px;
   margin-left: 5vw;
   margin-right: 5vw;
   width: 90vw;
