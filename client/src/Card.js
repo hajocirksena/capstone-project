@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { QRCode } from 'react-qr-svg'
+import DeleteButton from './DeleteButton'
+import EditButton from './EditButton'
 
 export default function Card() {
   const [items, setItems] = useState([])
@@ -13,7 +15,7 @@ export default function Card() {
   return (
     <Wrapper>
       {items.map(el => (
-        <div key={el.id}>
+        <div key={el._id}>
           <CardStyled image={`url(${el.image})`}>
             <TitleStyled>{el.name}</TitleStyled>
             <TextStyled>{el.description}</TextStyled>
@@ -24,6 +26,8 @@ export default function Card() {
             <QRStyled>
               <QRCode name="QR-Code" value={JSON.stringify(el._id)} />
             </QRStyled>
+            <EditButton />
+            <DeleteButton />
           </CardStyled>
         </div>
       ))}
