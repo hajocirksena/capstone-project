@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components/'
 
-export default function Button(id) {
-  const [deleteUpdate, setDeleteUpdate] = useState('')
-
+export default function Button({ id }) {
   function deleteItem() {
     const urlencoded = new URLSearchParams()
     urlencoded.append('_id', id)
@@ -16,7 +14,7 @@ export default function Button(id) {
       headers: headers,
     }
 
-    fetch('http://localhost:8050/items/', request)
+    fetch('http://localhost:8050/items/' + id, request)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error))
@@ -24,15 +22,13 @@ export default function Button(id) {
 
   return (
     <DeleteButton
-      onClick={() => deleteItem(deleteUpdate, id)}
-      onChange={handleDeleteUpdate}
+      onClick={() => {
+        deleteItem(id)
+      }}
     >
       <>DELETE</>
     </DeleteButton>
   )
-  function handleDeleteUpdate(event) {
-    setDeleteUpdate(event.target.value)
-  }
 }
 
 const DeleteButton = styled.button`

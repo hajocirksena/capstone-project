@@ -38,16 +38,16 @@ router.post("/", (request, response) => {
     .catch(() => response.json({ created: false }));
 });
 
-router.delete("/", (request, response) => {
+router.delete("/:id", (request, response) => {
   items
-    .findByIdAndDelete(request.body._id)
+    .findByIdAndDelete(request.params.id)
     .then(() => response.json({ deleted: true }));
 });
 
-router.patch("/", (request, response) => {
+router.put("/:id", (request, response) => {
   items
-    .findByIdAndUpdate(request.body._id, {
-      name: request.body.amount,
+    .findByIdAndUpdate(request.params.id, {
+      name: request.body.name,
       description: request.body.description,
       mail: request.body.mail,
       image: request.body.image,
