@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/'
 
-export default function Button({ id }) {
+export default function DeleteButton({ id }) {
   function deleteItem() {
     const urlencoded = new URLSearchParams()
     urlencoded.append('_id', id)
@@ -21,17 +21,17 @@ export default function Button({ id }) {
   }
 
   return (
-    <DeleteButton
+    <DeleteButtonStyled
       onClick={() => {
         deleteItem(id)
       }}
     >
-      <>DELETE</>
-    </DeleteButton>
+      DELETE
+    </DeleteButtonStyled>
   )
 }
 
-const DeleteButton = styled.button`
+const DeleteButtonStyled = styled.button`
   background: 159, 171, 171;
   font-weight: bold;
   color: red;
