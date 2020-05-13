@@ -38,4 +38,21 @@ router.post("/", (request, response) => {
     .catch(() => response.json({ created: false }));
 });
 
+router.delete("/:id", (request, response) => {
+  items
+    .findByIdAndDelete(request.params.id)
+    .then(() => response.json({ deleted: true }));
+});
+
+router.put("/update/:id", (request, response) => {
+  items
+    .findByIdAndUpdate(request.params.id, {
+      name: request.body.name,
+      description: request.body.description,
+      mail: request.body.mail,
+      image: request.body.image,
+    })
+    .then(() => response.json({ updated: true }));
+});
+
 export default router;
