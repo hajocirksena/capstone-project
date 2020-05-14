@@ -2,16 +2,25 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { QRCode } from 'react-qr-svg'
 import DeleteButton from './DeleteButton'
+import EditButton from './EditButton'
 
 export default function Card() {
   const [items, setItems] = useState([])
+  const [itemData, setItemData] = useState([])
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
     fetch('http://localhost:8050/items')
       .then(response => response.json())
       .then(data => setItems(data.reverse()))
-  }, [])
+      .then(items => setItemData(items))
+    setLoading(true)
+  }, [itemData])
 
   return (
+    // {loading ? (
+    //   <p>Loading...</p>
+    // ) : ()}
     <Wrapper>
       {items.map(el => (
         <div key={el._id}>
@@ -25,6 +34,7 @@ export default function Card() {
             <QRStyled>
               <QRCode name="QR-Code" value={JSON.stringify(el._id)} />
             </QRStyled>
+            <EditButton id={el._id} />
             <DeleteButton id={el._id} />
           </CardStyled>
         </div>

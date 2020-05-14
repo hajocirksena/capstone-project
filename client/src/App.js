@@ -5,6 +5,7 @@ import Header from './Header'
 import Card from './Card'
 import Form from './Form'
 import AddButton from './AddButton'
+import EditForm from './EditForm'
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path="/form">
           <Form />
+        </Route>
+        <Route path="/edit/:id">
+          <EditForm />
         </Route>
       </Switch>
     </Router>
