@@ -7,38 +7,60 @@ import EditButton from './EditButton'
 export default function Card() {
   const [items, setItems] = useState([])
   const [itemData, setItemData] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch('http://localhost:8050/items')
       .then(response => response.json())
       .then(data => setItems(data.reverse()))
       .then(items => setItemData(items))
-    setLoading(true)
+      .then(() => setLoading(false))
   }, [itemData])
 
+  // function deleteData(event) {
+  //   setItemData(...itemData)
+  // }
+  // useEffect(() => {
+  //   useFetch()
+  // }, [])
+
+  // function useFetch() {
+  //   const [items, setItems] = useState([])
+  //   const [itemData, setItemData] = useState([])
+  //   const [loading, setLoading] = useState(true)
+
+  //   useEffect(() => {
+  //     fetch('http://localhost:8050/items')
+  //       .then(response => response.json())
+  //       .then(data => setItems(data.reverse()))
+  //       .then(items => setItemData(items))
+  //       .then(() => setLoading(false))
+  //   }, [itemData])
+  // }
+
   return (
-    // {loading ? (
-    //   <p>Loading...</p>
-    // ) : ()}
     <Wrapper>
-      {items.map(el => (
-        <div key={el._id}>
-          <CardStyled image={`url(${el.image})`}>
-            <TitleStyled>{el.name}</TitleStyled>
-            <TextStyled>{el.description}</TextStyled>
-            <TextSmallStyled>
-              Sollte dein stuff gefunden werden bist du für den Finder per Mail
-              über {el.mail} zu erreichen.
-            </TextSmallStyled>
-            <QRStyled>
-              <QRCode name="QR-Code" value={JSON.stringify(el._id)} />
-            </QRStyled>
-            <EditButton id={el._id} />
-            <DeleteButton id={el._id} />
-          </CardStyled>
-        </div>
-      ))}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        items.map(el => (
+          <div key={el._id}>
+            <CardStyled image={`url(${el.image})`}>
+              <TitleStyled>{el.name}</TitleStyled>
+              <TextStyled>{el.description}</TextStyled>
+              <TextSmallStyled>
+                Sollte dein stuff gefunden werden bist du für den Finder per
+                Mail über {el.mail} zu erreichen.
+              </TextSmallStyled>
+              <QRStyled>
+                <QRCode name="QR-Code" value={JSON.stringify(el._id)} />
+              </QRStyled>
+              <EditButton id={el._id} />
+              <DeleteButton id={el._id} onDelete={''} />
+            </CardStyled>
+          </div>
+        ))
+      )}
     </Wrapper>
   )
 }

@@ -1,8 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/'
-import { Link } from 'react-router-dom'
 
-export default function DeleteButton({ id }) {
+export default function DeleteButton({ id, onDelete }) {
   function deleteItem() {
     const urlencoded = new URLSearchParams()
     urlencoded.append('_id', id)
@@ -17,20 +16,21 @@ export default function DeleteButton({ id }) {
 
     fetch('http://localhost:8050/items/' + id, request)
       .then(response => response.text())
-      .then(result => console.log(result))
+      .then(result => {
+        console.log(result)
+        onDelete()
+      })
       .catch(error => console.log('error', error))
   }
 
   return (
-    <Link to="/">
-      <DeleteButtonStyled
-        onClick={() => {
-          deleteItem(id)
-        }}
-      >
-        DELETE
-      </DeleteButtonStyled>
-    </Link>
+    <DeleteButtonStyled
+      onClick={() => {
+        deleteItem(id)
+      }}
+    >
+      DELETE
+    </DeleteButtonStyled>
   )
 }
 

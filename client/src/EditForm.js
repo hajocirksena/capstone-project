@@ -1,49 +1,73 @@
-// import React, { useState } from 'react'
+// import React, { useState, useEffect } from 'react'
 // import styled from 'styled-components'
-// import { useForm } from 'react-hook-form'
 // import CloseButton from './CloseButton'
 // import ImageUpload from './ImageUpload'
 // import { Link } from 'react-router-dom'
 
 // export default function EditForm() {
-//   const { register, errors } = useForm()
+//   // useEffect(() => {
+//   //   fetch('http://localhost:8050/items/')
+//   //     .then(res => res.json())
+//   //     .then(data => setItemData(data))
+//   // }, [])
+//   const itemData = props => {
+//     const [id, setId] = useState('')
+//     const [name, setName] = useState('')
+//     const [description, setDescription] = useState('')
+//     const [image, setImage] = useState('')
+//     // const [routeRedirect, setRedirect] = useState("");
 
-//   const [itemData, setItemData] = useState({
-//     name: 'bla',
-//     description: 'itemData.description',
-//     mail: 'itemData.mail',
-//     image: 'itemdata.image',
-//   })
-
-//   function handleChange(event) {
-//     setItemData({ ...itemData, [event.target.name]: event.target.value })
-//   }
-
-//   function updateData(itemData) {
-//     const headers = new Headers()
-//     headers.append('Content-Type', 'application/json')
-//     const urlencoded = new URLSearchParams()
-//     urlencoded.append('_id', id)
-
-//     const request = {
-//       method: 'PATCH',
-//       headers: headers,
-//       body: itemData,
-//       redirect: 'follow',
+//     function getItem() {
+//       fetch('http://localhost:8050/items/' + props.params.id)
+//         .then(res => {
+//           return res.json()
+//         })
+//         .then(response => {
+//           setId(response.item._id)
+//           setName(response.item.name)
+//           setDescription(response.item.description)
+//           setImage(response.item.image)
+//         })
+//         .catch(err => {
+//           console.log(err)
+//         })
 //     }
 
-//       fetch('http://localhost:8050/items/' + id, request)
-//       .then(response => response.text())
-//       .then(result => console.log(result))
-//       .catch(error => console.log('error', error))
-//   }
+//     // const [itemData, setItemData] = useState({
+//     //   // name: 'itemData.name',
+//     //   // description: 'itemData.description',
+//     //   // mail: 'itemData.mail',
+//     //   // image: 'itemdata.image',
+//     // })
 
+//     // function handleChange(event) {
+//     //   setItemData({ ...itemData, [event.target.name]: event.target.value })
+//     // }
+
+//     // function updateData(itemData) {
+//     //   const headers = new Headers()
+//     //   headers.append('Content-Type', 'application/json')
+
+//     //   const request = {
+//     //     method: 'PATCH',
+//     //     headers: headers,
+//     //     body: itemData,
+//     //     redirect: 'follow',
+//     //   }
+
+//     //   fetch('http://localhost:8050/items/' + id, request)
+//     //     .then(response => response.text())
+//     //     .then(result => console.log(result))
+//     //     .catch(error => console.log('error', error))
+//     // }
+//   }
 //   return (
 //     <CardStyled>
 //       <Form>
 //         <CloseButtonStyle>
 //           <CloseButton />
 //         </CloseButtonStyle>
+//         {JSON.stringify(itemData)}
 //         <HeadlineStyled>edit your stuff</HeadlineStyled>
 //         <LabelStyledName for="name">Wie heißt dein stuff?</LabelStyledName>
 //         <ItemInput
@@ -53,9 +77,8 @@
 //           value={itemData.name}
 //           onChange={handleChange}
 //           placeholder="Z.B.: Schlüssel, Handy..."
-//           ref={register({ required: true, maxLength: 150 })}
 //         ></ItemInput>
-//         <ErrorMsg>{errors.name && <p>insert name!</p>}</ErrorMsg>
+
 //         <LabelStyled for="description">Beschreibe deinen stuff:</LabelStyled>
 //         <DescriptionInput
 //           name="description"
@@ -64,11 +87,8 @@
 //           value={itemData.description}
 //           onChange={handleChange}
 //           placeholder="Beschreibe deinen Artikel. Diese Info wird auch für den Finder sichtbar sein."
-//           ref={register({ required: true, maxLength: 150 })}
 //         />
-//         <ErrorMsg>
-//           {errors.description && <p> insert description! up to 150 signs!</p>}
-//         </ErrorMsg>
+
 //         <LabelStyled for="mail">E-Mail:</LabelStyled>
 //         <MailInput
 //           name="mail"
@@ -77,9 +97,7 @@
 //           value={itemData.mail}
 //           onChange={handleChange}
 //           placeholder="Unter dieser E-mail kann dich der Finder erreichen."
-//           ref={register({ required: true })}
 //         />
-//         <ErrorMsg>{errors.mail && <p>insert e-mail</p>}</ErrorMsg>
 
 //         <ImgSection>
 //           <div>
@@ -89,13 +107,12 @@
 //               type="file"
 //               value={itemData.image}
 //               // setImageUrl={setImageUrl}
-//               ref={register({ required: true })}
 //             />
 //           </div>
 //         </ImgSection>
 //         <SubmitButton
 //           type="submit"
-//           onClick={() => updateData(JSON.stringify(itemData))}
+//           // onClick={() => updateData(JSON.stringify(itemData))}
 //         >
 //           <Link to="/" className="Link">
 //             register your stuff
@@ -163,12 +180,6 @@
 //   margin: 4px;
 //   border: none;
 //   border-bottom: 1px solid darkgray;
-// `
-
-// const ErrorMsg = styled.p`
-//   font-size: 0.6em;
-//   color: red;
-//   margin: 4px;
 // `
 
 // const SubmitButton = styled.button`
