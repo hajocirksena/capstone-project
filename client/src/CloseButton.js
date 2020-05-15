@@ -6,7 +6,7 @@ export default function CloseButton({ onClick }) {
   return (
     <Button onClick={onClick}>
       <Link to="/">
-        <img src="./images/close.svg" alt="close formular" />
+        <img src="./images/close.svg" alt="close" />
       </Link>
     </Button>
   )

@@ -5,30 +5,45 @@ import DeleteButton from './DeleteButton'
 
 export default function Card() {
   const [items, setItems] = useState([])
+  const [itemData, setItemData] = useState([])
+  const [loading, setLoading] = useState(true)
+
   useEffect(() => {
     fetch('http://localhost:8050/items')
       .then(response => response.json())
       .then(data => setItems(data.reverse()))
-  }, [])
+      .then(items => setItemData(items))
+      .then(() => setLoading(false))
+  }, [itemData])
+
+  function deleteCard() {
+    fetch('http://localhost:8050/items').then(response =>
+      response.json().then(data => setItems(data.reverse()))
+    )
+  }
 
   return (
     <Wrapper>
-      {items.map(el => (
-        <div key={el._id}>
-          <CardStyled image={`url(${el.image})`}>
-            <TitleStyled>{el.name}</TitleStyled>
-            <TextStyled>{el.description}</TextStyled>
-            <TextSmallStyled>
-              Sollte dein stuff gefunden werden bist du für den Finder per Mail
-              über {el.mail} zu erreichen.
-            </TextSmallStyled>
-            <QRStyled>
-              <QRCode name="QR-Code" value={JSON.stringify(el._id)} />
-            </QRStyled>
-            <DeleteButton id={el._id} />
-          </CardStyled>
-        </div>
-      ))}
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        items.map(el => (
+          <div key={el._id}>
+            <CardStyled image={`url(${el.image})`}>
+              <TitleStyled>{el.name}</TitleStyled>
+              <TextStyled>{el.description}</TextStyled>
+              <TextSmallStyled>
+                Sollte dein stuff gefunden werden bist du für den Finder per
+                Mail über {el.mail} zu erreichen.
+              </TextSmallStyled>
+              <QRStyled>
+                <QRCode name="QR-Code" value={JSON.stringify(el._id)} />
+              </QRStyled>
+              <DeleteButton id={el._id} onDelete={deleteCard} />
+            </CardStyled>
+          </div>
+        ))
+      )}
     </Wrapper>
   )
 }

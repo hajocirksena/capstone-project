@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useForm } from 'react-hook-form'
 import CloseButton from './CloseButton'
 import ImageUpload from './ImageUpload'
 import { QRCode } from 'react-qr-svg'
 import { Link } from 'react-router-dom'
 
 export default function Formular() {
-  const { register, errors } = useForm()
-
   const [itemData, setItemData] = useState({
     name: '',
     description: '',
@@ -54,9 +51,9 @@ export default function Formular() {
           value={itemData.name}
           onChange={handleChange}
           placeholder="Z.B.: Schlüssel, Handy..."
-          ref={register({ required: true, maxLength: 150 })}
+          required
         />
-        <ErrorMsg>{errors.name && <p>insert name!</p>}</ErrorMsg>
+
         <LabelStyled for="description">Beschreibe deinen stuff:</LabelStyled>
         <DescriptionInput
           name="description"
@@ -65,11 +62,9 @@ export default function Formular() {
           value={itemData.description}
           onChange={handleChange}
           placeholder="Beschreibe deinen Artikel. Diese Info wird auch für den Finder sichtbar sein."
-          ref={register({ required: true, maxLength: 150 })}
+          required
         />
-        <ErrorMsg>
-          {errors.description && <p> insert description! up to 150 signs!</p>}
-        </ErrorMsg>
+
         <LabelStyled for="mail">E-Mail:</LabelStyled>
         <MailInput
           name="mail"
@@ -78,9 +73,8 @@ export default function Formular() {
           value={itemData.mail}
           onChange={handleChange}
           placeholder="Unter dieser E-mail kann dich der Finder erreichen."
-          ref={register({ required: true })}
+          required
         />
-        <ErrorMsg>{errors.mail && <p>insert e-mail</p>}</ErrorMsg>
 
         <ImgSection>
           <div>
@@ -90,7 +84,6 @@ export default function Formular() {
               type="file"
               value={itemData.image}
               setImageUrl={setImageUrl}
-              ref={register({ required: true })}
             />
           </div>
 
@@ -181,12 +174,6 @@ const MailInput = styled.input`
   margin: 4px;
   border: none;
   border-bottom: 1px solid darkgray;
-`
-
-const ErrorMsg = styled.p`
-  font-size: 0.6em;
-  color: red;
-  margin: 4px;
 `
 
 const SubmitButton = styled.button`

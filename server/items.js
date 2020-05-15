@@ -44,7 +44,9 @@ router.delete("/:id", (request, response) => {
     .then(() => response.json({ deleted: true }));
 });
 
-router.put("/update/:id", (request, response) => {
+
+router.patch("/:id", (request, response) => {
+
   items
     .findByIdAndUpdate(request.params.id, {
       name: request.body.name,

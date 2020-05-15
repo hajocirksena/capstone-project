@@ -63,10 +63,11 @@ const Wrapper = styled.div`
   box-shadow: 3px 1px 3px lightgray;
   border: 1px solid darkgray;
   .btn {
-    font-size: 100px;
+    font-size: 20px;
+    width: 112px;
     position: absolute;
-    top: 0;
-    right: 0;
+    left: 0;
+    top: -2px;
     opacity: 0;
   }
   :active {
