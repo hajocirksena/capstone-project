@@ -29,16 +29,16 @@ export default function DeleteButton({ id, onDelete }) {
         deleteItem(id)
       }}
     >
-      DELETE
+      <img src="./images/Trash.png" alt="bin" />
     </DeleteButtonStyled>
   )
 }
 
 const DeleteButtonStyled = styled.button`
   background: 159, 171, 171;
-  font-weight: bold;
   color: red;
   height: 48px;
+  width: 48px;
   text-decoration: none;
   padding: 4px;
   position: absolute;

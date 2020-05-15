@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { QRCode } from 'react-qr-svg'
 import DeleteButton from './DeleteButton'
-import EditButton from './EditButton'
 
 export default function Card() {
   const [items, setItems] = useState([])
@@ -17,26 +16,11 @@ export default function Card() {
       .then(() => setLoading(false))
   }, [itemData])
 
-  // function deleteData(event) {
-  //   setItemData(...itemData)
-  // }
-  // useEffect(() => {
-  //   useFetch()
-  // }, [])
-
-  // function useFetch() {
-  //   const [items, setItems] = useState([])
-  //   const [itemData, setItemData] = useState([])
-  //   const [loading, setLoading] = useState(true)
-
-  //   useEffect(() => {
-  //     fetch('http://localhost:8050/items')
-  //       .then(response => response.json())
-  //       .then(data => setItems(data.reverse()))
-  //       .then(items => setItemData(items))
-  //       .then(() => setLoading(false))
-  //   }, [itemData])
-  // }
+  function handleClick() {
+    fetch('http://localhost:8050/items').then(response =>
+      response.json().then(data => setItems(data.reverse()))
+    )
+  }
 
   return (
     <Wrapper>
@@ -55,8 +39,7 @@ export default function Card() {
               <QRStyled>
                 <QRCode name="QR-Code" value={JSON.stringify(el._id)} />
               </QRStyled>
-              <EditButton id={el._id} />
-              <DeleteButton id={el._id} onDelete={''} />
+              <DeleteButton id={el._id} onDelete={handleClick} />
             </CardStyled>
           </div>
         ))
