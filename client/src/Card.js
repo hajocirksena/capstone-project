@@ -16,7 +16,7 @@ export default function Card() {
       .then(() => setLoading(false))
   }, [itemData])
 
-  function handleClick() {
+  function deleteCard() {
     fetch('http://localhost:8050/items').then(response =>
       response.json().then(data => setItems(data.reverse()))
     )
@@ -39,7 +39,7 @@ export default function Card() {
               <QRStyled>
                 <QRCode name="QR-Code" value={JSON.stringify(el._id)} />
               </QRStyled>
-              <DeleteButton id={el._id} onDelete={handleClick} />
+              <DeleteButton id={el._id} onDelete={deleteCard} />
             </CardStyled>
           </div>
         ))
