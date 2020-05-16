@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { QRCode } from 'react-qr-svg'
+
 import DeleteButton from './DeleteButton'
 
 export default function Card() {
@@ -23,7 +24,7 @@ export default function Card() {
   }
 
   return (
-    <Wrapper>
+    <WrapperStyled>
       {loading ? (
         <img
           src="./images/Loading.gif"
@@ -41,14 +42,21 @@ export default function Card() {
                 Mail über {el.mail} zu erreichen.
               </TextSmallStyled>
               <QRStyled>
-                <QRCode name="QR-Code" value={JSON.stringify(el._id)} />
+                <QRCode
+                  name="QR-Code"
+                  id={el._id}
+                  value={'http://localhost:3000/' + el._id}
+                />
+
+                {/* <a href={'http://localhost:3000/' + el._id}>Landingpage</a> */}
               </QRStyled>
-              <DeleteButton id={el._id} onDelete={deleteCard} />
+
+              <DeleteButton onDelete={deleteCard} />
             </CardStyled>
           </div>
         ))
       )}
-    </Wrapper>
+    </WrapperStyled>
   )
 }
 
@@ -83,7 +91,7 @@ const TitleStyled = styled.h2`
   text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
 `
 
-const Wrapper = styled.div`
+const WrapperStyled = styled.div`
   display: flex;
   flex-wrap: nowrap;
   padding-bottom: 30px;
