@@ -25,7 +25,11 @@ export default function Card() {
   return (
     <Wrapper>
       {loading ? (
-        <p>Loading...</p>
+        <img
+          src="./images/Loading.gif"
+          alt="loading"
+          className="loading-image"
+        />
       ) : (
         items.map(el => (
           <div key={el._id}>
@@ -71,7 +75,7 @@ const TextStyled = styled.p`
   text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
 `
 const TitleStyled = styled.h2`
-  font-family: Roboto;
+  font-family: Poiret One;
   color: rgb(38, 38, 38);
   font-size: 2.5em;
   text-align: left;
@@ -85,6 +89,10 @@ const Wrapper = styled.div`
   padding-bottom: 30px;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
+  .loading-image {
+    display: block;
+    margin: auto;
+  }
 `
 
 const CardStyled = styled.div`

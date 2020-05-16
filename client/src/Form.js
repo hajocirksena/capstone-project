@@ -19,6 +19,10 @@ export default function Formular() {
   function setImageUrl(url) {
     setItemData({ ...itemData, image: url })
   }
+  function handleSubmit(event) {
+    event.preventDefault()
+    uploadData(JSON.stringify(itemData))
+  }
 
   function uploadData(itemData) {
     const headers = new Headers()
@@ -52,6 +56,8 @@ export default function Formular() {
           onChange={handleChange}
           placeholder="Z.B.: Schlüssel, Handy..."
           required
+          minLength="2"
+          maxLength="15"
         />
 
         <LabelStyled for="description">Beschreibe deinen stuff:</LabelStyled>
@@ -63,6 +69,7 @@ export default function Formular() {
           onChange={handleChange}
           placeholder="Beschreibe deinen Artikel. Diese Info wird auch für den Finder sichtbar sein."
           required
+          maxLength="150"
         />
 
         <LabelStyled for="mail">E-Mail:</LabelStyled>
@@ -73,7 +80,7 @@ export default function Formular() {
           value={itemData.mail}
           onChange={handleChange}
           placeholder="Unter dieser E-mail kann dich der Finder erreichen."
-          required
+          required="@"
         />
 
         <ImgSection>
@@ -92,10 +99,7 @@ export default function Formular() {
             <QRCode name="QR-Code" value={JSON.stringify(itemData)} />
           </QRCodeStyled>
         </ImgSection>
-        <SubmitButton
-          type="submit"
-          onClick={() => uploadData(JSON.stringify(itemData))}
-        >
+        <SubmitButton type="submit" onClick={handleSubmit}>
           <Link to="/" className="Link">
             register your stuff
           </Link>
@@ -192,6 +196,7 @@ const SubmitButton = styled.button`
     text-decoration: none;
     color: black;
     padding: 4px 85px;
+    cursor: default;
   }
   :active {
     background: rgb(211, 245, 243);
