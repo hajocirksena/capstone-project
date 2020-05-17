@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/'
 
+
 export default function DeleteButton({ id, onDelete }) {
+
   function deleteItem() {
     const urlencoded = new URLSearchParams()
     urlencoded.append('_id', id)
@@ -30,6 +32,8 @@ export default function DeleteButton({ id, onDelete }) {
       }}
     >
       <img src="./images/Trash.png" alt="bin" className="bin" />
+
+
     </DeleteButtonStyled>
   )
 }

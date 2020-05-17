@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import QRCode from 'qrcode.react'
 import { saveAs } from 'file-saver'
-
 import DeleteButton from './DeleteButton'
 
 export default function Card() {
