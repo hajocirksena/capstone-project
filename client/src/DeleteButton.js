@@ -35,7 +35,7 @@ export default function DeleteButton({ id, onDelete }) {
 }
 
 const DeleteButtonStyled = styled.button`
-  background: 159, 171, 171;
+  background: rgb(200, 227, 226);
   color: red;
   height: 48px;
   width: 48px;
@@ -47,8 +47,9 @@ const DeleteButtonStyled = styled.button`
   display: flex;
   border: 1px solid darkgray;
   border-radius: 10px;
+  box-shadow: 3px 1px 3px lightgray;
   :active {
-    background: rgb(200, 227, 226);
+    background: lightgrey;
   }
   .bin {
     width: 28px;

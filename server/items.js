@@ -51,6 +51,7 @@ router.delete("/:id", (request, response) => {
     .catch(console.log);
 });
 
+// EDIT ROUTE STILL IN PROGRESS
 // router.patch("/:id", (request, response) => {
 //   items
 //     .findByIdAndUpdate(request.params.id, {

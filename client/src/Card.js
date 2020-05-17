@@ -45,9 +45,13 @@ export default function Card() {
             <CardStyled image={`url(${el.image})`}>
               <TitleStyled>{el.name}</TitleStyled>
 
-              {/* <a href={'http://localhost:3000/' + el._id}>Landingpage</a> */}
-
-              <TextStyled>{el.description}</TextStyled>
+              <TextStyled>
+                {el.description}
+                {/* PLACEHOLDER LINK TO SCANNED QRCODE CAUSE YOU CANT SCAN INSIDE THE BROWSER */}
+                {/* <a max-height="4px;" href={'http://localhost:3000/' + el._id}>
+                  Landingpage
+                </a> */}
+              </TextStyled>
               <TextSmallStyled>
                 Sollte dein stuff gefunden werden bist du für den Finder per
                 Mail über {el.mail} zu erreichen.
@@ -59,7 +63,9 @@ export default function Card() {
                   value={'http://localhost:3000/' + el._id}
                 />
               </QRStyled>
-              <SaveButtonStyled onClick={downloadCode}>save</SaveButtonStyled>
+              <SaveQrButtonStyled onClick={downloadCode}>
+                save qr
+              </SaveQrButtonStyled>
               <DeleteButton id={el._id} onDelete={deleteCard} />
             </CardStyled>
           </div>
@@ -68,39 +74,42 @@ export default function Card() {
     </WrapperStyled>
   )
 }
-const SaveButtonStyled = styled.button`
-  font-size: 1.5rem;
+const SaveQrButtonStyled = styled.button`
+  font-size: 1.2rem;
   width: 112px;
   padding-bottom: 4px;
-  background: rgb 159, 171, 171;
+  background: rgb(200, 227, 226);
   border-radius: 10px;
   border: 1px solid darkgray;
   position: absolute;
   bottom: 2%;
   margin: auto;
   left: 32%;
+  box-shadow: 3px 1px 3px lightgray;
   :active {
-    background: rgb(200, 227, 226);
+    background: lightgrey;
   }
 `
 const QRStyled = styled.div`
   position: absolute;
-  top: 63%;
+  top: 65%;
   left: 30%;
   width: 80px;
   height: 80px;
 `
 
 const TextSmallStyled = styled.p`
-  font-size: 0.8em;
+  font-size: 1em;
   padding: 4px;
   color: rgb(38, 38, 38);
-  margin: 4vh 20vw 2vh 0;
+  margin: 12px 16vw 0 0;
 `
 const TextStyled = styled.p`
-  font-size: 1.3em;
+  height: 33%;
+  overflow: scroll;
+  font-size: 1.2em;
   color: rgb(38, 38, 38);
-  padding: 6px;
+  padding: 8px;
   margin-top: 1.5vh;
   font-family: sans-serif;
   text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
@@ -110,7 +119,7 @@ const TitleStyled = styled.h2`
   color: rgb(38, 38, 38);
   font-size: 2.5em;
   text-align: left;
-  margin: 16vh 0 0 0;
+  margin: 2vh 0 2vh 4px;
   text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
 `
 
@@ -133,7 +142,7 @@ const CardStyled = styled.div`
   margin: 0 5vw;
   background-image: linear-gradient(
       to bottom left,
-      rgba(245, 246, 252, 0.78),
+      rgba(245, 246, 252, 0.8),
       rgb(202, 230, 233)
     ),
     ${props => props.image};

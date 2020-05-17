@@ -12,25 +12,6 @@ export default function LandingPage({ id }) {
       .then(() => setLoading(false))
   }, [])
 
-  // function individualCall() {
-  //   const urlencoded = new URLSearchParams()
-  //   urlencoded.append('_id', id)
-
-  //   const headers = new Headers()
-  //   headers.append('Content-Type', 'application/json')
-
-  //   const request = {
-  //     method: 'GET',
-  //     headers: headers,
-  //   }
-
-  //   fetch('http://localhost:8050/items/' + id, request)
-  //     .then(response => response.text())
-  //     .then(data => setItem(data.reverse()))
-  //     .then(() => setLoading(false))
-  //     .catch(error => console.log('error', error))
-  // }
-
   return (
     <Wrapper>
       {loading ? (
@@ -42,14 +23,13 @@ export default function LandingPage({ id }) {
       ) : (
         item.map(el => (
           <CardStyled key={el._id} image={`url(${el.image})`}>
-            <TitleStyled>Hey! Du hast was gefunden?!?!</TitleStyled>
-            <TextStyled>{el.description}</TextStyled>
-            <TextSmallStyled>
-              Du kannst die gute Seele sein und jemanden glücklich machen.Nehme
-              per Mail Kontakt zu dem Eigentümer auf und bringe ihm seinen stuff
-              zurück!
-              {el.mail}
-            </TextSmallStyled>
+            <TitleStyled>Willkommen bei this is my stuff</TitleStyled>
+            <TextStyled>" {el.description} "</TextStyled>
+            <TextStyled>
+              Jetzt ist es an Dir jemanden glücklich zu machen. Nehme per Mail
+              Kontakt zu dem Eigentümer auf und bringe den stuff zurück!
+            </TextStyled>
+            <MailStyled>{el.mail}</MailStyled>
           </CardStyled>
         ))
       )}
@@ -57,16 +37,21 @@ export default function LandingPage({ id }) {
   )
 }
 
-const TextSmallStyled = styled.p`
-  font-size: 0.8em;
-  padding: 4px;
+const MailStyled = styled.p`
+  font-size: 1.5em;
   color: rgb(38, 38, 38);
-  margin: 4vh 20vw 2vh 0;
+  padding: 8px;
+  margin: 4px;
+  margin-top: 1.5vh;
+  font-weight: bold;
+  text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
 `
+
 const TextStyled = styled.p`
   font-size: 1.3em;
   color: rgb(38, 38, 38);
-  padding: 6px;
+  padding: 8px;
+  margin: 4px;
   margin-top: 1.5vh;
   font-family: sans-serif;
   text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
@@ -76,7 +61,7 @@ const TitleStyled = styled.h2`
   color: rgb(38, 38, 38);
   font-size: 2.5em;
   text-align: left;
-  margin: 16vh 0 0 0;
+  margin: 0 0 0 0;
   text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
 `
 
@@ -105,7 +90,7 @@ const CardStyled = styled.div`
     ${props => props.image};
   background-size: cover;
   width: 90vw;
-  height: 85vh;
+  height: 83vh;
   border-radius: 4px;
   box-shadow: 10px 5px 15px darkgray;
   scroll-snap-align: center;

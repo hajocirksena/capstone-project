@@ -24,7 +24,7 @@ const Button = styled.button`
     border-radius: 50px;
     cursor: default;
     :active {
-      background: rgb(211, 245, 243);
+      background: lightgrey;
     }
   }
 `

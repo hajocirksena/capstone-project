@@ -81,7 +81,7 @@ const Wrapper = styled.div`
     margin: auto;
   }
   :active {
-    background: rgb(211, 245, 243);
+    background: lightgrey;
   }
 `
 const ImgStyle = styled.div`

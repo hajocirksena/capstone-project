@@ -48,7 +48,7 @@ export default function Formular() {
           <CloseButton />
         </CloseButtonStyle>
         <LabelStyledName for="name">Wie heißt dein stuff?</LabelStyledName>
-        <ItemInput
+        <NameInput
           name="name"
           id="name"
           type="text"
@@ -69,7 +69,7 @@ export default function Formular() {
           onChange={handleChange}
           placeholder="Beschreibe deinen Artikel. Diese Info wird auch für den Finder sichtbar sein."
           required
-          maxLength="150"
+          maxLength="210"
         />
 
         <LabelStyled for="mail">E-Mail:</LabelStyled>
@@ -79,7 +79,7 @@ export default function Formular() {
           type="text"
           value={itemData.mail}
           onChange={handleChange}
-          placeholder="Unter dieser E-mail kann dich der Finder erreichen."
+          placeholder="Kontaktadresse für den Finder"
           required="@"
         />
 
@@ -144,18 +144,20 @@ const CloseButtonStyle = styled.button`
 `
 
 const LabelStyledName = styled.label`
+  font-size: 1.2em;
   position: absolute;
   margin: 0 0 0 4px;
   top: 32px;
   left: 8px;
 `
 const LabelStyled = styled.label`
+  font-size: 1.2em;
   text-align: left;
   padding: 4px;
   margin: 16px 4px 0 4px;
 `
-const ItemInput = styled.input`
-  font-size: 0.8em;
+const NameInput = styled.input`
+  font-size: 1em;
   padding: 0 4px;
   margin: 12px 4px;
   border: none;
@@ -164,16 +166,15 @@ const ItemInput = styled.input`
 
 const DescriptionInput = styled.textarea`
   font-family: sans-serif;
-  font-size: 0.8em;
   padding: 4px;
   margin: 4px;
   border: none;
   box-shadow: 1px 2px 4px grey;
-  height: 13vh;
+  height: 18vh;
 `
 
 const MailInput = styled.input`
-  font-size: 0.8em;
+  font-size: 1em;
   padding: 4px;
   margin: 4px;
   border: none;
@@ -199,7 +200,7 @@ const SubmitButton = styled.button`
     cursor: default;
   }
   :active {
-    background: rgb(211, 245, 243);
+    background: lightgrey;
   }
 `
 
