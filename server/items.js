@@ -26,6 +26,12 @@ router.get("/", (request, response) => {
   });
 });
 
+router.get("/:id", (request, response) => {
+  items.find(request.params.name).then((data) => {
+    response.json(data);
+  });
+});
+
 router.post("/", (request, response) => {
   items
     .create({
@@ -41,20 +47,22 @@ router.post("/", (request, response) => {
 router.delete("/:id", (request, response) => {
   items
     .findByIdAndDelete(request.params.id)
-    .then(() => response.json({ deleted: true }));
+    .then(() => response.json({ deleted: true }))
+    .catch(console.log);
 });
 
 
-router.patch("/:id", (request, response) => {
+// EDIT ROUTE STILL IN PROGRESS
+// router.patch("/:id", (request, response) => {
+//   items
+//     .findByIdAndUpdate(request.params.id, {
+//       name: request.body.name,
+//       description: request.body.description,
+//       mail: request.body.mail,
+//       image: request.body.image,
+//     })
+//     .then(() => response.json({ updated: true }));
+// });
 
-  items
-    .findByIdAndUpdate(request.params.id, {
-      name: request.body.name,
-      description: request.body.description,
-      mail: request.body.mail,
-      image: request.body.image,
-    })
-    .then(() => response.json({ updated: true }));
-});
 
 export default router;

@@ -39,7 +39,13 @@ function ImageUploader({ setImageUrl }) {
           className="btn"
         />
         {loading ? (
-          <StyledText>Loading...</StyledText>
+          <StyledText>
+            <img
+              src="./images/Loading.gif"
+              alt="loading"
+              className="loading-image"
+            />
+          </StyledText>
         ) : (
           <ImgStyle>
             <img src={image} id="image" alt="" />
@@ -70,8 +76,12 @@ const Wrapper = styled.div`
     top: -2px;
     opacity: 0;
   }
+  .loading-image {
+    display: block;
+    margin: auto;
+  }
   :active {
-    background: rgb(211, 245, 243);
+    background: lightgrey;
   }
 `
 const ImgStyle = styled.div`

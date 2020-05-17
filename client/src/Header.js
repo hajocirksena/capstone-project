@@ -29,7 +29,7 @@ const HeaderFrame = styled.span`
   }
 `
 const Name = styled.h2`
-  font-family: OpenSans-Regular;
+  font-family: Poiret One;
   color: rgb(38, 38, 38);
   text-decoration: underline;
   font-size: 2em;

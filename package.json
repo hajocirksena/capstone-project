@@ -8,7 +8,9 @@
     "react-router-dom": "^5.1.2",
     "styled-components": "^5.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "cypress": "^4.5.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

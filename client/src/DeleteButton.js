@@ -31,15 +31,15 @@ export default function DeleteButton({ id, onDelete }) {
         deleteItem(id)
       }}
     >
+      <img src="./images/Trash.png" alt="bin" className="bin" />
 
-      <img src="./images/Trash.png" alt="bin" />
 
     </DeleteButtonStyled>
   )
 }
 
 const DeleteButtonStyled = styled.button`
-  background: 159, 171, 171;
+  background: rgb(200, 227, 226);
   color: red;
   height: 48px;
   width: 48px;
@@ -49,9 +49,16 @@ const DeleteButtonStyled = styled.button`
   bottom: 12px;
   right: 12px;
   display: flex;
-  border: none;
+  border: 1px solid darkgray;
   border-radius: 10px;
+  box-shadow: 3px 1px 3px lightgray;
   :active {
-    background: rgb(211, 245, 243);
+    background: lightgrey;
+  }
+  .bin {
+    width: 28px;
+    height: 28px;
+    display: block;
+    margin: auto;
   }
 `

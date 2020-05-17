@@ -2,17 +2,17 @@ import React from 'react'
 import styled from 'styled-components/'
 import { Link } from 'react-router-dom'
 
-export default function Button({ onClick }) {
+export default function AddButton() {
   return (
-    <AddButton onClick={onClick}>
+    <AddButtonStyled>
       <Link to="/form">
         <img src="./images/plus.svg" alt="add card" />
       </Link>
-    </AddButton>
+    </AddButtonStyled>
   )
 }
 
-const AddButton = styled.button`
+const AddButtonStyled = styled.button`
   background: transparent;
   margin: auto;
   margin-bottom: 1.3vh;
@@ -23,6 +23,7 @@ const AddButton = styled.button`
     width: 50px;
     height: auto;
     padding: 4px;
+    cursor: default;
   }
   :active {
     background: rgb(211, 245, 243);
