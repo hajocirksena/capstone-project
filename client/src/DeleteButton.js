@@ -45,10 +45,10 @@ const DeleteButtonStyled = styled.button`
   bottom: 12px;
   right: 12px;
   display: flex;
-  border: none;
+  border: 1px solid darkgray;
   border-radius: 10px;
   :active {
-    background: rgb(211, 245, 243);
+    background: rgb(200, 227, 226);
   }
   .bin {
     width: 28px;
