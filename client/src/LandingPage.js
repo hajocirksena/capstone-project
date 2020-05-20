@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
-export default function LandingPage({ id }) {
+export default function LandingPage() {
+  const url = new URL(document.URL)
+  const id = url.pathname.slice(1)
+
   const [item, setItem] = useState('')
   const [loading, setLoading] = useState(true)
 
-  useEffect(id => {
+  useEffect(() => {
     fetch('http://localhost:8050/items/' + id)
       .then(response => response.json())
-      .then(data => setItem(data.reverse()))
+      .then(data => setItem(data))
       .then(() => setLoading(false))
-  }, [])
+      .catch(error => console.log(error))
+  }, [id])
 
   return (
     <Wrapper>
@@ -21,17 +25,17 @@ export default function LandingPage({ id }) {
           className="loading-image"
         />
       ) : (
-        item.map(el => (
-          <CardStyled key={el._id} image={`url(${el.image})`}>
-            <TitleStyled>Willkommen bei this is my stuff</TitleStyled>
-            <TextStyled>" {el.description} "</TextStyled>
-            <TextStyled>
-              Jetzt ist es an Dir jemanden glücklich zu machen. Nehme per Mail
-              Kontakt zu dem Eigentümer auf und bringe den stuff zurück!
-            </TextStyled>
-            <MailStyled>{el.mail}</MailStyled>
-          </CardStyled>
-        ))
+        <CardStyled key={item._id} image={`url(${item.image})`}>
+          <TitleStyled>Willkommen bei this is my stuff</TitleStyled>
+          <TextStyled>{item.name} gefunden?</TextStyled>
+          <TextStyled>Hier ein paar Worte vom Eigentümer:</TextStyled>
+          <TextStyled>" {item.description} "</TextStyled>
+          <TextStyled>
+            Jetzt ist es an Dir jemanden glücklich zu machen. Nehme per Mail
+            Kontakt zu dem Eigentümer auf und bringe den stuff zurück!
+          </TextStyled>
+          <MailStyled>{item.mail}</MailStyled>
+        </CardStyled>
       )}
     </Wrapper>
   )
