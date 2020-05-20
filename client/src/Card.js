@@ -10,7 +10,7 @@ export default function Card() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('http://localhost:8050/items')
+    fetch('/items')
       .then(response => response.json())
       .then(data => setItems(data.reverse()))
       .then(items => setItemData(items))
@@ -18,7 +18,7 @@ export default function Card() {
   }, [itemData])
 
   function deleteCard() {
-    fetch('http://localhost:8050/items').then(response =>
+    fetch('/items').then(response =>
       response.json().then(data => setItems(data.reverse()))
     )
   }

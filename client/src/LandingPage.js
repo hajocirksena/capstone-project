@@ -9,7 +9,7 @@ export default function LandingPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('http://localhost:8050/items/' + id)
+    fetch('/items/' + id)
       .then(response => response.json())
       .then(data => setItem(data))
       .then(() => setLoading(false))
@@ -29,27 +29,23 @@ export default function LandingPage() {
           <TitleStyled>Willkommen bei this is my stuff</TitleStyled>
           <TextStyled>{item.name} gefunden?</TextStyled>
           <TextStyled>Hier ein paar Worte vom Eigentümer:</TextStyled>
-          <TextStyled>" {item.description} "</TextStyled>
           <TextStyled>
-            Jetzt ist es an Dir jemanden glücklich zu machen. Nehme per Mail
-            Kontakt zu dem Eigentümer auf und bringe den stuff zurück!
+            <p className="italic">"{item.description}"</p>
           </TextStyled>
-          <MailStyled>{item.mail}</MailStyled>
+          <TextStyled>
+            Jetzt ist es an Dir jemanden glücklich zu machen. Du bist nur einen
+            Tab auf die Mailadresse vom Besitzer entfernt...
+          </TextStyled>
+          <TextStyled>
+            <a className="bold" href={'mailto:' + item.mail}>
+              {item.mail}
+            </a>
+          </TextStyled>
         </CardStyled>
       )}
     </Wrapper>
   )
 }
-
-const MailStyled = styled.p`
-  font-size: 1.5em;
-  color: rgb(38, 38, 38);
-  padding: 8px;
-  margin: 4px;
-  margin-top: 1.5vh;
-  font-weight: bold;
-  text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
-`
 
 const TextStyled = styled.p`
   font-size: 1.3em;
@@ -58,15 +54,26 @@ const TextStyled = styled.p`
   margin: 4px;
   margin-top: 1.5vh;
   font-family: sans-serif;
-  text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
+  .italic {
+    font-style: italic;
+  }
+  .bold {
+    cursor: default;
+    font-weight: 700;
+    font-size: 1.5em;
+    color: rgb(38, 38, 38);
+    display: flex;
+    justify-content: center;
+    :active {
+      opacity: 50%;
+    }
+  }
 `
 const TitleStyled = styled.h2`
   font-family: Poiret One;
   color: rgb(38, 38, 38);
   font-size: 2.5em;
-  text-align: left;
-  margin: 0 0 0 0;
-  text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
+  text-align: center;
 `
 
 const Wrapper = styled.div`

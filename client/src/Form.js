@@ -35,7 +35,7 @@ export default function Formular() {
       redirect: 'follow',
     }
 
-    fetch('http://localhost:8050/items/', request)
+    fetch('/items/', request)
       .then(response => response.text())
       .then(result => console.log(result))
       .catch(error => console.log('error', error))
