@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/'
+import styled from 'styled-components/macro'
 
 
 export default function DeleteButton({ id, onDelete }) {
@@ -19,7 +19,6 @@ export default function DeleteButton({ id, onDelete }) {
     fetch('http://localhost:8050/items/' + id, request)
       .then(response => response.text())
       .then(result => {
-        console.log(result)
         onDelete()
       })
       .catch(error => console.log('error', error))

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import CloseButton from './CloseButton'
 import ImageUpload from './ImageUpload'
 import { QRCode } from 'react-qr-svg'
@@ -43,7 +43,7 @@ export default function Formular() {
 
   return (
     <CardStyled>
-      <Form>
+      <Form data-cy="form">
         <CloseButtonStyle>
           <CloseButton />
         </CloseButtonStyle>
@@ -99,7 +99,7 @@ export default function Formular() {
             <QRCode name="QR-Code" value={JSON.stringify(itemData)} />
           </QRCodeStyled>
         </ImgSection>
-        <SubmitButton type="submit" onClick={handleSubmit}>
+        <SubmitButton data-cy="submit" type="submit" onClick={handleSubmit}>
           <Link to="/" className="Link">
             register your stuff
           </Link>

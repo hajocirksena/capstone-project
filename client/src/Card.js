@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import QRCode from 'qrcode.react'
 import { saveAs } from 'file-saver'
 import DeleteButton from './DeleteButton'
@@ -44,16 +44,10 @@ export default function Card() {
             <CardStyled image={`url(${el.image})`}>
               <TitleStyled>{el.name}</TitleStyled>
 
-              <TextStyled>
-                {el.description}
-                {/* PLACEHOLDER LINK TO SCANNED QRCODE CAUSE YOU CANT SCAN INSIDE THE BROWSER */}
-                {/* <a max-height="4px;" href={'http://localhost:3000/' + el._id}>
-                  Landingpage
-                </a> */}
-              </TextStyled>
+              <TextStyled>{el.description}</TextStyled>
               <TextSmallStyled>
                 Sollte dein stuff gefunden werden bist du für den Finder per
-                Mail über {el.mail} zu erreichen.
+                Mail an {el.mail} zu erreichen.
               </TextSmallStyled>
               <QRStyled>
                 <QRCode
@@ -61,11 +55,14 @@ export default function Card() {
                   id="QrCode"
                   value={'http://localhost:3000/' + el._id}
                 />
+                <SaveQrButtonStyled onClick={downloadCode}>
+                  save qr
+                </SaveQrButtonStyled>
               </QRStyled>
-              <SaveQrButtonStyled onClick={downloadCode}>
-                save qr
-              </SaveQrButtonStyled>
               <DeleteButton id={el._id} onDelete={deleteCard} />
+              <QRFoundStyled>
+                <a href={'http://localhost:3000/' + el._id}>?</a>
+              </QRFoundStyled>
             </CardStyled>
           </div>
         ))
@@ -73,6 +70,26 @@ export default function Card() {
     </WrapperStyled>
   )
 }
+
+const QRFoundStyled = styled.button`
+  font-size: 1.2rem;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 4px;
+  background: rgb(200, 227, 226);
+  border-radius: 10px;
+  border: 1px solid darkgray;
+  position: absolute;
+  bottom: 2%;
+  margin: auto;
+  left: 2%;
+  box-shadow: 3px 1px 3px lightgray;
+  :active {
+    background: lightgrey;
+  }
+`
+
 const SaveQrButtonStyled = styled.button`
   font-size: 1.2rem;
   width: 112px;
@@ -83,18 +100,15 @@ const SaveQrButtonStyled = styled.button`
   position: absolute;
   bottom: 2%;
   margin: auto;
-  left: 32%;
   box-shadow: 3px 1px 3px lightgray;
   :active {
     background: lightgrey;
   }
 `
 const QRStyled = styled.div`
-  position: absolute;
-  top: 65%;
-  left: 30%;
-  width: 80px;
-  height: 80px;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 24px auto;
 `
 
 const TextSmallStyled = styled.p`
@@ -104,12 +118,12 @@ const TextSmallStyled = styled.p`
   margin: 12px 16vw 0 0;
 `
 const TextStyled = styled.p`
-  height: 33%;
+  height: 21vh;
   overflow: scroll;
   font-size: 1.2em;
   color: rgb(38, 38, 38);
   padding: 8px;
-  margin-top: 1.5vh;
+  margin-top: 1vh;
   font-family: sans-serif;
   text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
 `
@@ -118,7 +132,7 @@ const TitleStyled = styled.h2`
   color: rgb(38, 38, 38);
   font-size: 2.5em;
   text-align: left;
-  margin: 2vh 0 2vh 4px;
+  margin: 2vh 0 0 4px;
   text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
 `
 

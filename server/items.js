@@ -27,7 +27,7 @@ router.get("/", (request, response) => {
 });
 
 router.get("/:id", (request, response) => {
-  items.find(request.params.name).then((data) => {
+  items.findById(request.params.id).then((data) => {
     response.json(data);
   });
 });
