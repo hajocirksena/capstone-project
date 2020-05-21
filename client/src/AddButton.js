@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function AddButton() {
   return (
-    <AddButtonStyled>
+    <AddButtonStyled data-cy="AddButton">
       <Link to="/form">
         <img src="./images/plus.svg" alt="add card" />
       </Link>

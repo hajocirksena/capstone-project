@@ -24,6 +24,7 @@ export default function DeleteButton({ id, onDelete }) {
 
   return (
     <DeleteButtonStyled
+      data-cy="DeleteButton"
       onClick={() => {
         deleteItem(id)
       }}
