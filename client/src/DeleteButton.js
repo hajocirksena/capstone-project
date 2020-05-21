@@ -26,7 +26,8 @@ export default function DeleteButton({ id, onDelete }) {
     <DeleteButtonStyled
       data-cy="DeleteButton"
       onClick={() => {
-        deleteItem(id)
+        window.confirm('You really want to delete your stuff?') &&
+          deleteItem(id)
       }}
     >
       <img src="./images/Trash.png" alt="bin" className="bin" />
