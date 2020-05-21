@@ -10,7 +10,7 @@ export default function Card() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('http://localhost:8050/items')
+    fetch('/items')
       .then(response => response.json())
       .then(data => setItems(data.reverse()))
       .then(items => setItemData(items))
@@ -18,7 +18,7 @@ export default function Card() {
   }, [itemData])
 
   function deleteCard() {
-    fetch('http://localhost:8050/items').then(response =>
+    fetch('/items').then(response =>
       response.json().then(data => setItems(data.reverse()))
     )
   }
@@ -108,7 +108,7 @@ const SaveQrButtonStyled = styled.button`
 const QRStyled = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin: 24px auto;
+  margin: 20px;
 `
 
 const TextSmallStyled = styled.p`
@@ -118,7 +118,7 @@ const TextSmallStyled = styled.p`
   margin: 12px 16vw 0 0;
 `
 const TextStyled = styled.p`
-  height: 21vh;
+  height: 144px;
   overflow: scroll;
   font-size: 1.2em;
   color: rgb(38, 38, 38);

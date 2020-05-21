@@ -16,7 +16,7 @@ export default function DeleteButton({ id, onDelete }) {
       headers: headers,
     }
 
-    fetch('http://localhost:8050/items/' + id, request)
+    fetch('/items/' + id, request)
       .then(response => response.text())
       .then(result => {
         onDelete()
@@ -26,6 +26,7 @@ export default function DeleteButton({ id, onDelete }) {
 
   return (
     <DeleteButtonStyled
+      data-cy="DeleteButton"
       onClick={() => {
         deleteItem(id)
       }}
