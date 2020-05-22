@@ -39,5 +39,6 @@ export default createGlobalStyle`
       border: none;
       border-bottom: 1px solid darkgray;
      }
+     
   }
   `
