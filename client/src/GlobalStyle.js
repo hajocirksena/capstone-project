@@ -31,6 +31,7 @@ export default createGlobalStyle`
       padding: 8px;
       font-family: sans-serif;
     }
+    
      input{
       font-size: 1em; 
       padding: 0 4px;
@@ -38,6 +39,5 @@ export default createGlobalStyle`
       border: none;
       border-bottom: 1px solid darkgray;
      }
-   
   }
   `
