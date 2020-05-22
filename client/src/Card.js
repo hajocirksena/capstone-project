@@ -53,6 +53,7 @@ export default function Card() {
                 <QRCode
                   name="QRCode"
                   id="QrCode"
+                  alt="QRCode"
                   value={'http://localhost:3000/' + el._id}
                 />
                 <SaveQrButtonStyled onClick={downloadCode}>
