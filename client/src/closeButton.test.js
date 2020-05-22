@@ -1,14 +1,14 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import AddButton from './AddButton'
+import CloseButton from './CloseButton'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-test('renders AddButton', () => {
+test('renders CloseButton', () => {
   const { getByAltText } = render(
     <Router>
-      <AddButton />
+      <CloseButton />
     </Router>
   )
-  const button = getByAltText('add item')
+  const button = getByAltText('close')
   expect(button).toBeInTheDocument()
 })

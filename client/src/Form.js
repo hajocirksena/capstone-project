@@ -55,11 +55,10 @@ export default function Formular() {
           value={itemData.name}
           onChange={handleChange}
           placeholder="Z.B.: Schlüssel, Handy..."
-          required
           minLength="2"
           maxLength="15"
+          required
         />
-
         <LabelStyled for="description">Beschreibe deinen stuff:</LabelStyled>
         <DescriptionInput
           name="description"
@@ -71,7 +70,6 @@ export default function Formular() {
           required
           maxLength="200"
         />
-
         <LabelStyled for="mail">E-Mail:</LabelStyled>
         <input
           name="mail"
@@ -82,7 +80,6 @@ export default function Formular() {
           placeholder="Kontaktadresse für den Finder"
           required
         />
-
         <ImgSection>
           <ImageUpload
             name="image"
@@ -93,13 +90,13 @@ export default function Formular() {
           />
 
           <QRCodeStyled>
-            <QRCodeLabel>your code!</QRCodeLabel>
+            <QRCodeLabel>Dein Code:</QRCodeLabel>
             <QRCode name="QR-Code" value={JSON.stringify(itemData)} />
           </QRCodeStyled>
         </ImgSection>
         <SubmitButton data-cy="submit" type="submit" onClick={handleSubmit}>
           <Link to="/" className="Link">
-            register your stuff
+            registriere deinen stuff
           </Link>
         </SubmitButton>
       </Form>
@@ -148,26 +145,20 @@ const ImgSection = styled.div`
   width: 100%;
   justify-content: space-evenly;
 `
-const QRCodeLabel = styled.section`
-  display: inline-block;
+const QRCodeLabel = styled.p`
+  text-decoration: underline;
   text-align: center;
-  padding: 4px;
   margin: 2vh 7vw 12px 0;
   width: 112px;
   height: 1.7em;
-  background: var(--primary);
-  border-radius: 12px;
-  box-shadow: 3px 1px 3px lightgray;
-  border: 1px solid darkgray;
 `
 const QRCodeStyled = styled.div`
   width: 112px;
 `
 
 const SubmitButton = styled.button`
-  position: absolute;
-  bottom: 2%;
-  align-content: center;
+  display: flex;
+
   font-size: 1em;
   height: 5vh;
   width: 87vw;
@@ -179,7 +170,8 @@ const SubmitButton = styled.button`
   .Link {
     text-decoration: none;
     color: black;
-    padding: 4px 84px;
+    margin: auto;
+    padding: 4px;
     cursor: default;
   }
   :active {
