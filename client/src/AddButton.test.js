@@ -1,32 +1,9 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from '@testing-library/react'
 import AddButton from './AddButton'
 
-test('renders  AddButton', () => {
-  const { getByImage } = render(<AddButton />)
-  const element = getByImage(/Search.../i)
-  expect(element).toBeInTheDocument()
+test('renders AddButton', () => {
+  const { getByAltText } = render(<AddButton />)
+  const button = getByAltText('add item')
+  expect(button).toBeInTheDocument()
 })
-// const container = document.createElement('div')
-// ReactDOM.render(
-//   <AddButton>
-//     <img src="./images/plus.svg" alt="add card" />
-//   </AddButton>,
-//   container
-// )
-// expect(container.textContent).toBe(
-//   <img src="./images/plus.svg" alt="add card" />
-// )
-// })
-
-// test('renders Submit Button', () => {
-//   const container = document.createElement('div')
-//   ReactDOM.render(<SubmitButton>Los gehts!</SubmitButton>, container)
-//   expect(container.textContent).toBe('Los gehts!')
-// })
-
-// test('renders Submit Button', () => {
-//   const container = document.createElement('div')
-//   ReactDOM.render(<SubmitButton>Submit</SubmitButton>, container)
-//   expect(container.textContent).toBe('Submit')
-// })

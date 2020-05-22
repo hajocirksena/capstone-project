@@ -51,16 +51,4 @@ router.delete("/:id", (request, response) => {
     .catch(console.log);
 });
 
-// EDIT ROUTE STILL IN PROGRESS
-// router.patch("/:id", (request, response) => {
-//   items
-//     .findByIdAndUpdate(request.params.id, {
-//       name: request.body.name,
-//       description: request.body.description,
-//       mail: request.body.mail,
-//       image: request.body.image,
-//     })
-//     .then(() => response.json({ updated: true }));
-// });
-
 export default router;

@@ -60,6 +60,7 @@ export default function Card() {
                 </SaveQrButtonStyled>
               </QRStyled>
               <DeleteButton id={el._id} onDelete={deleteCard} />
+              {/* THIS IS A PLACEHOLDER-LINK BECAUSE ITS IMPOSSIBLE TO SCAN QRCODES IN THE BROWSER */}
               <QRFoundStyled>
                 <a href={'http://localhost:3000/' + el._id}>?</a>
               </QRFoundStyled>
@@ -71,13 +72,14 @@ export default function Card() {
   )
 }
 
+/* THIS IS QUICK STYLING FOR THE PLACEHOLDER LINK */
 const QRFoundStyled = styled.button`
   font-size: 1.2rem;
   width: 20px;
   display: flex;
   justify-content: center;
   padding-bottom: 4px;
-  background: rgb(200, 227, 226);
+  background: var(--primary);
   border-radius: 10px;
   border: 1px solid darkgray;
   position: absolute;
@@ -86,7 +88,7 @@ const QRFoundStyled = styled.button`
   left: 2%;
   box-shadow: 3px 1px 3px lightgray;
   :active {
-    background: lightgrey;
+    background: var(--secondary);
   }
 `
 
@@ -94,7 +96,7 @@ const SaveQrButtonStyled = styled.button`
   font-size: 1.2rem;
   width: 112px;
   padding-bottom: 4px;
-  background: rgb(200, 227, 226);
+  background: var(--primary);
   border-radius: 10px;
   border: 1px solid darkgray;
   position: absolute;
@@ -102,7 +104,7 @@ const SaveQrButtonStyled = styled.button`
   margin: auto;
   box-shadow: 3px 1px 3px lightgray;
   :active {
-    background: lightgrey;
+    background: var(--secondary);
   }
 `
 const QRStyled = styled.div`
@@ -112,28 +114,17 @@ const QRStyled = styled.div`
 `
 
 const TextSmallStyled = styled.p`
-  font-size: 1em;
-  padding: 4px;
-  color: rgb(38, 38, 38);
   margin: 12px 16vw 0 0;
 `
 const TextStyled = styled.p`
   height: 144px;
   overflow: scroll;
   font-size: 1.2em;
-  color: rgb(38, 38, 38);
-  padding: 8px;
   margin-top: 1vh;
-  font-family: sans-serif;
-  text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
 `
-const TitleStyled = styled.h2`
-  font-family: Poiret One;
-  color: rgb(38, 38, 38);
+const TitleStyled = styled.h1`
   font-size: 2.5em;
-  text-align: left;
-  margin: 2vh 0 0 4px;
-  text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
+  margin: 20px 0 0 4px;
 `
 
 const WrapperStyled = styled.div`
@@ -156,7 +147,7 @@ const CardStyled = styled.div`
   background-image: linear-gradient(
       to bottom left,
       rgba(245, 246, 252, 0.8),
-      rgb(202, 230, 233)
+      var(--primary)
     ),
     ${props => props.image};
   background-size: cover;

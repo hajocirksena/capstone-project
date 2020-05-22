@@ -15,24 +15,16 @@ export default function Header() {
 const HeaderFrame = styled.span`
   display: flex;
   height: 8vh;
-  justify-content: flex-start;
-  align-items: flex-start;
-  background: linear-gradient(to bottom left, white, #bfdad9);
+  background: linear-gradient(to bottom left, white, var(--primary));
   margin-right: 6vw;
   border-bottom-right-radius: 40px;
   box-shadow: 3px 1px 3px lightgray;
   img {
-    display: flex;
     height: 40px;
-    width: auto;
     margin: 6px 0 0 15px;
   }
 `
-const Name = styled.h2`
-  font-family: Poiret One;
-  color: rgb(38, 38, 38);
+const Name = styled.h1`
   text-decoration: underline;
-  font-size: 2em;
   margin: 8px 0 0 35px;
-  text-shadow: -1px 0 lightgrey, 0 1px lightgrey;
 `

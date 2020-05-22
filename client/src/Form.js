@@ -48,7 +48,7 @@ export default function Formular() {
           <CloseButton />
         </CloseButtonStyle>
         <LabelStyledName for="name">Wie heißt dein stuff?</LabelStyledName>
-        <NameInput
+        <input
           name="name"
           id="name"
           type="text"
@@ -69,30 +69,28 @@ export default function Formular() {
           onChange={handleChange}
           placeholder="Beschreibe deinen Artikel. Diese Info wird auch für den Finder sichtbar sein."
           required
-          maxLength="210"
+          maxLength="200"
         />
 
         <LabelStyled for="mail">E-Mail:</LabelStyled>
-        <MailInput
+        <input
           name="mail"
           id="mail"
           type="text"
           value={itemData.mail}
           onChange={handleChange}
           placeholder="Kontaktadresse für den Finder"
-          required="@"
+          required
         />
 
         <ImgSection>
-          <div>
-            <ImageUpload
-              name="image"
-              id="image"
-              type="file"
-              value={itemData.image}
-              setImageUrl={setImageUrl}
-            />
-          </div>
+          <ImageUpload
+            name="image"
+            id="image"
+            type="file"
+            value={itemData.image}
+            setImageUrl={setImageUrl}
+          />
 
           <QRCodeStyled>
             <QRCodeLabel>your code!</QRCodeLabel>
@@ -109,28 +107,6 @@ export default function Formular() {
   )
 }
 
-const ImgSection = styled.div`
-  display: flex;
-  height: 28vh;
-  width: 100%;
-  justify-content: space-evenly;
-`
-const QRCodeLabel = styled.section`
-  display: inline-block;
-  text-align: center;
-  padding: 4px;
-  margin: 2vh 7vw 12px 0;
-  width: 112px;
-  height: 1.7em;
-  background: rgba(200, 227, 226);
-  border-radius: 10px;
-  box-shadow: 3px 1px 3px lightgray;
-  border: 1px solid darkgray;
-`
-const QRCodeStyled = styled.div`
-  width: 112px;
-`
-
 const Form = styled.form`
   display: flex;
   flex-direction: column;
@@ -140,7 +116,7 @@ const CloseButtonStyle = styled.button`
   justify-content: flex-end;
   margin: 8px;
   border: none;
-  background: transparent;
+  background: var(--secondary);
 `
 
 const LabelStyledName = styled.label`
@@ -156,13 +132,6 @@ const LabelStyled = styled.label`
   padding: 4px;
   margin: 16px 4px 0 4px;
 `
-const NameInput = styled.input`
-  font-size: 1em;
-  padding: 0 4px;
-  margin: 12px 4px;
-  border: none;
-  border-bottom: 1px solid darkgray;
-`
 
 const DescriptionInput = styled.textarea`
   font-family: sans-serif;
@@ -173,12 +142,26 @@ const DescriptionInput = styled.textarea`
   height: 18vh;
 `
 
-const MailInput = styled.input`
-  font-size: 1em;
+const ImgSection = styled.div`
+  display: flex;
+  height: 28vh;
+  width: 100%;
+  justify-content: space-evenly;
+`
+const QRCodeLabel = styled.section`
+  display: inline-block;
+  text-align: center;
   padding: 4px;
-  margin: 4px;
-  border: none;
-  border-bottom: 1px solid darkgray;
+  margin: 2vh 7vw 12px 0;
+  width: 112px;
+  height: 1.7em;
+  background: var(--primary);
+  border-radius: 12px;
+  box-shadow: 3px 1px 3px lightgray;
+  border: 1px solid darkgray;
+`
+const QRCodeStyled = styled.div`
+  width: 112px;
 `
 
 const SubmitButton = styled.button`
@@ -186,21 +169,21 @@ const SubmitButton = styled.button`
   bottom: 2%;
   align-content: center;
   font-size: 1em;
-  height: 2em;
+  height: 5vh;
   width: 87vw;
   border-radius: 12px;
-  background: rgba(200, 227, 226);
-  border-radius: 10px;
+  background: var(--primary);
+  border-radius: 12px;
   box-shadow: 4px 1px 4px lightgray;
   border: 1px solid darkgray;
   .Link {
     text-decoration: none;
     color: black;
-    padding: 4px 85px;
+    padding: 4px 84px;
     cursor: default;
   }
   :active {
-    background: lightgrey;
+    background: var(--tertiary);
   }
 `
 
@@ -212,7 +195,6 @@ const CardStyled = styled.div`
   margin-right: 5vw;
   width: 90vw;
   height: 87vh;
-  color: black;
   border-radius: 4px;
   box-shadow: 10px 5px 15px darkgray;
 `
