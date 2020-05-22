@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 
-export default function CloseButton({ onClick }) {
+export default function CloseButton() {
   return (
-    <Button onClick={onClick}>
+    <Button>
       <Link to="/">
         <img src="./images/close.svg" alt="close" />
       </Link>
@@ -13,18 +13,17 @@ export default function CloseButton({ onClick }) {
 }
 
 const Button = styled.button`
-  background: transparent;
+  background: var(--secondary);
   width: 30px;
   height: 30px;
   border: none;
-  border-radius: 50px;
   img {
     width: 30px;
     height: auto;
     border-radius: 50px;
     cursor: default;
     :active {
-      background: lightgrey;
+      background: var(--primary);
     }
   }
 `

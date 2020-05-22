@@ -28,7 +28,8 @@ export default function DeleteButton({ id, onDelete }) {
     <DeleteButtonStyled
       data-cy="DeleteButton"
       onClick={() => {
-        deleteItem(id)
+        window.confirm('You really want to delete your stuff?') &&
+          deleteItem(id)
       }}
     >
       <img src="./images/Trash.png" alt="bin" className="bin" />
@@ -39,7 +40,7 @@ export default function DeleteButton({ id, onDelete }) {
 }
 
 const DeleteButtonStyled = styled.button`
-  background: rgb(200, 227, 226);
+  background: var(--primary);
   color: red;
   height: 48px;
   width: 48px;
@@ -53,7 +54,7 @@ const DeleteButtonStyled = styled.button`
   border-radius: 10px;
   box-shadow: 3px 1px 3px lightgray;
   :active {
-    background: lightgrey;
+    background: var(--secondary);
   }
   .bin {
     width: 28px;

@@ -6,7 +6,7 @@ export default function AddButton() {
   return (
     <AddButtonStyled data-cy="AddButton">
       <Link to="/form">
-        <img src="./images/plus.svg" alt="add card" />
+        <img src="./images/plus.svg" alt="add item" />
       </Link>
     </AddButtonStyled>
   )

@@ -1,9 +1,16 @@
-// import React from 'react'
-// import { render } from '@testing-library/react'
-// import App from './App'
+import React from 'react'
+import { render } from '@testing-library/react'
+import App from './App'
+import AddButton from './AddButton'
 
-// test('renders card js & button', () => {
-//   const { getByText } = render(<App />)
-//   const linkElement = getByText(/stuff/i)
-//   expect(linkElement).toBeInTheDocument()
-// })
+test('renders header', () => {
+  const { getByText } = render(<App />)
+  const header = getByText(/stuff/i)
+  expect(header).toBeInTheDocument()
+})
+
+test('renders AddButton', () => {
+  const { getByAltText } = render(<AddButton />)
+  const button = getByAltText('add item')
+  expect(button).toBeInTheDocument()
+})

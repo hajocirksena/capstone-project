@@ -4,10 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "babel-plugin-macros": "^2.8.0",
-    "react-icons": "^3.10.0",
-    "react-router-dom": "^5.1.2",
-    "styled-components": "^5.1.0"
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "cypress": "^4.5.0"
