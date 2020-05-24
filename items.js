@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 
 const router = Router();
 
-mongoose.connect("mongodb://localhost:27017/thisismystuff");
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost:27017/thisismystuff"
+);
 
 const items = mongoose.model("Item", {
   name: {
@@ -50,6 +52,5 @@ router.delete("/:id", (request, response) => {
     .then(() => response.json({ deleted: true }))
     .catch(console.log);
 });
-
 
 export default router;

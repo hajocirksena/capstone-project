@@ -59,6 +59,7 @@ export default function Formular() {
           maxLength="15"
           required
         />
+
         <LabelStyled for="description">Beschreibe deinen stuff:</LabelStyled>
         <DescriptionInput
           name="description"
@@ -80,6 +81,7 @@ export default function Formular() {
           placeholder="Kontaktadresse für den Finder"
           required
         />
+
         <ImgSection>
           <ImageUpload
             name="image"

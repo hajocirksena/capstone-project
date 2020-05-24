@@ -1,23 +1,33 @@
 {
   "name": "capstone-project",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "„this is my stuff!“ ist eine Art virtuelles Fundbüro.  Der User registriert seine Lieblingsgegenstände und generiert einen individuellen QR-Code. Dieser Code wird an dem Gegenstand platziert. Sollte ein Gegenstand verloren gehen gibt es für den Finder durch den QR-Code die Möglichkeit den Eigentümer eines gefundenen Gegenstandes zu kontaktieren und den \"stuff\" zurückzugeben.",
+  "main": "server.js",
   "dependencies": {
-    "react-router-dom": "^5.1.2"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.10"
   },
   "devDependencies": {
-    "cypress": "^4.5.0"
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node server.js"
+  },
+  "engines": {
+    "node": "12.16.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/hajocirksena/capstone-project.git"
+    "url": "git+https://github.com/hajocirksena/capstone-project.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/hajocirksena/capstone-project/issues"
   },

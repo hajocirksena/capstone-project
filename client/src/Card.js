@@ -111,7 +111,7 @@ const SaveQrButtonStyled = styled.button`
 const QRStyled = styled.div`
   display: flex;
   justify-content: space-evenly;
-  margin: 20px;
+  margin: 16px;
 `
 
 const TextSmallStyled = styled.p`
