@@ -54,7 +54,7 @@ export default function Card() {
                   name="QRCode"
                   id="QrCode"
                   alt="QRCode"
-                  value={'http://localhost:3000/' + el._id}
+                  value={'https://thisismystuff.herokuapp.com/' + el._id}
                 />
                 <SaveQrButtonStyled onClick={downloadCode}>
                   save qr
@@ -63,7 +63,7 @@ export default function Card() {
               <DeleteButton id={el._id} onDelete={deleteCard} />
               {/* THIS IS A PLACEHOLDER-LINK BECAUSE ITS IMPOSSIBLE TO SCAN QRCODES IN THE BROWSER */}
               <QRFoundStyled>
-                <a href={'http://localhost:3000/' + el._id}>?</a>
+                <a href={'https://thisismystuff.herokuapp.com/' + el._id}>?</a>
               </QRFoundStyled>
             </CardStyled>
           </div>
