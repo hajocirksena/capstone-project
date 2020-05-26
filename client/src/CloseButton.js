@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
+import close from './images/close.svg'
 
 export default function CloseButton() {
   return (
     <Button>
       <Link to="/">
-        <img src="./images/close.svg" alt="close" />
+        <img src={close} alt="close" />
       </Link>
     </Button>
   )

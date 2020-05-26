@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/macro'
+import trash from './images/trash.png'
 
 export default function DeleteButton({ id, onDelete }) {
   function deleteItem() {
@@ -30,7 +31,7 @@ export default function DeleteButton({ id, onDelete }) {
           deleteItem(id)
       }}
     >
-      <img src="./images/Trash.png" alt="bin" className="bin" />
+      <img src={trash} alt="bin" className="bin" />
     </DeleteButtonStyled>
   )
 }
@@ -50,7 +51,7 @@ const DeleteButtonStyled = styled.button`
   border-radius: 10px;
   box-shadow: 3px 1px 3px lightgray;
   :active {
-    background: var(--secondary);
+    background: var(--tertiary);
   }
   .bin {
     width: 28px;
