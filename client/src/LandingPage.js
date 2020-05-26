@@ -25,7 +25,7 @@ export default function LandingPage() {
           className="loading-image"
         />
       ) : (
-        <CardStyled key={item._id} image={`url(${item.image})`}>
+        <CardStyled key={item.$oid} image={`url(${item.image})`}>
           <TitleStyled>Willkommen bei this is my stuff</TitleStyled>
           <TextStyled>{item.name} gefunden?</TextStyled>
           <TextStyled>Hier ein paar Worte vom Eigentümer:</TextStyled>
