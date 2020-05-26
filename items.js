@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 
 const router = Router();
 
-mongoose.connect("mongodb://localhost:27017/thisismystuff");
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost:27017/thisismystuff"
+);
 
 const items = mongoose.model("Item", {
   name: {
@@ -22,13 +24,13 @@ const items = mongoose.model("Item", {
 
 router.get("/", (request, response) => {
   items.find().then((data) => {
-    response.json(data);
+    response.json(data).catch(console.log("error"));
   });
 });
 
 router.get("/:id", (request, response) => {
   items.findById(request.params.id).then((data) => {
-    response.json(data);
+    response.json(data).catch(console.log("error"));
   });
 });
 
@@ -48,8 +50,7 @@ router.delete("/:id", (request, response) => {
   items
     .findByIdAndDelete(request.params.id)
     .then(() => response.json({ deleted: true }))
-    .catch(console.log);
+    .catch(console.log("error"));
 });
-
 
 export default router;

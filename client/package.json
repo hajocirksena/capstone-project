@@ -2,7 +2,7 @@
   "name": "capstone-project",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8050/",
+  "proxy": "http://localhost:8050",
   "dependencies": {
     "cloudinary": "^1.21.0",
     "cloudinary-core": "^2.8.2",
@@ -61,5 +61,5 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "author": "",
-  "license": "ISC"
+  "license": "MIT"
 }

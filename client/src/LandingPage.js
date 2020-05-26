@@ -52,7 +52,7 @@ const TextStyled = styled.p`
   color: rgb(38, 38, 38);
   padding: 8px;
   margin: 4px;
-  margin-top: 1.5vh;
+  margin-top: 12px;
   font-family: sans-serif;
   .italic {
     font-style: italic;
@@ -79,7 +79,7 @@ const TitleStyled = styled.h2`
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: nowrap;
-  padding-bottom: 30px;
+  padding-bottom: 32px;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   .loading-image {
@@ -90,9 +90,9 @@ const Wrapper = styled.div`
 
 const CardStyled = styled.div`
   position: relative;
-  top: 5%;
+  top: 12px;
   padding: 10px;
-  margin: 0 5vw;
+  margin: auto;
   background-image: linear-gradient(
       to bottom left,
       rgba(245, 246, 252, 0.78),
