@@ -27,7 +27,7 @@ export default function DeleteButton({ id, onDelete }) {
     <DeleteButtonStyled
       data-cy="DeleteButton"
       onClick={() => {
-        window.confirm('You really want to delete your stuff?') &&
+        window.confirm('Möchtest du wirklich deinen stuff löschen?') &&
           deleteItem(id)
       }}
     >

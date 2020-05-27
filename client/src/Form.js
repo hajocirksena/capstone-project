@@ -5,7 +5,7 @@ import ImageUpload from './ImageUpload'
 import { QRCode } from 'react-qr-svg'
 import { Link } from 'react-router-dom'
 
-export default function Formular() {
+export default function Form() {
   const [itemData, setItemData] = useState({
     name: '',
     description: '',
@@ -13,40 +13,12 @@ export default function Formular() {
     image: '',
   })
 
-  function handleChange(event) {
-    setItemData({ ...itemData, [event.target.name]: event.target.value })
-  }
-  function setImageUrl(url) {
-    setItemData({ ...itemData, image: url })
-  }
-  function handleSubmit(event) {
-    event.preventDefault()
-    uploadData(JSON.stringify(itemData))
-  }
-
-  function uploadData(itemData) {
-    const headers = new Headers()
-    headers.append('Content-Type', 'application/json')
-
-    const request = {
-      method: 'POST',
-      headers: headers,
-      body: itemData,
-      redirect: 'follow',
-    }
-
-    fetch('/items/', request)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error))
-  }
-
   return (
     <CardStyled>
-      <Form data-cy="form">
-        <CloseButtonStyle>
+      <FormStyled data-cy="form">
+        <CloseButtonStyled>
           <CloseButton />
-        </CloseButtonStyle>
+        </CloseButtonStyled>
         <LabelStyledName for="name">Wie heißt dein stuff?</LabelStyledName>
         <input
           name="name"
@@ -101,16 +73,44 @@ export default function Formular() {
             registriere deinen stuff
           </Link>
         </SubmitButton>
-      </Form>
+      </FormStyled>
     </CardStyled>
   )
+
+  function handleChange(event) {
+    setItemData({ ...itemData, [event.target.name]: event.target.value })
+  }
+  function setImageUrl(url) {
+    setItemData({ ...itemData, image: url })
+  }
+  function handleSubmit(event) {
+    event.preventDefault()
+    uploadData(JSON.stringify(itemData))
+  }
+
+  function uploadData(itemData) {
+    const headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+
+    const request = {
+      method: 'POST',
+      headers: headers,
+      body: itemData,
+      redirect: 'follow',
+    }
+
+    fetch('/items/', request)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error))
+  }
 }
 
-const Form = styled.form`
+const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
 `
-const CloseButtonStyle = styled.button`
+const CloseButtonStyled = styled.button`
   display: flex;
   justify-content: flex-end;
   margin: 8px;

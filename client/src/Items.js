@@ -5,7 +5,7 @@ import { saveAs } from 'file-saver'
 import DeleteButton from './DeleteButton'
 import load from './images/loading.gif'
 
-export default function Card() {
+export default function Items({ getItems }) {
   const [items, setItems] = useState([])
   const [itemData, setItemData] = useState([])
   const [loading, setLoading] = useState(true)
@@ -17,19 +17,6 @@ export default function Card() {
       .then(items => setItemData(items))
       .then(() => setLoading(false))
   }, [itemData])
-
-  function deleteCard() {
-    fetch('/items').then(response =>
-      response.json().then(data => setItems(data.reverse()))
-    )
-  }
-
-  function downloadCode() {
-    var svg = document.getElementById('QrCode')
-    svg.toBlob(function(stuff) {
-      saveAs(stuff, 'QrCode.png')
-    })
-  }
 
   return (
     <WrapperStyled>
@@ -68,6 +55,18 @@ export default function Card() {
       )}
     </WrapperStyled>
   )
+  function deleteCard() {
+    fetch('/items').then(response =>
+      response.json().then(data => setItems(data.reverse()))
+    )
+  }
+
+  function downloadCode() {
+    var svg = document.getElementById('QrCode')
+    svg.toBlob(function(stuff) {
+      saveAs(stuff, 'QrCode.png')
+    })
+  }
 }
 
 /* THIS IS QUICK STYLING FOR THE PLACEHOLDER LINK */
