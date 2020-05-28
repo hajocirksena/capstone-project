@@ -18,7 +18,7 @@ function App() {
         <Route path="/form">
           <Form />
         </Route>
-        <Route path="/:id">
+        <Route path="/items/:id">
           <LandingPage />
         </Route>
       </Switch>
