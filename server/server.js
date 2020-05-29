@@ -14,8 +14,8 @@ server.use(express.static(path.join(__dirname, "client", "build")));
 
 server.use("/items", items);
 
-// server.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-// });
+server.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 server.listen(port || 8050);
