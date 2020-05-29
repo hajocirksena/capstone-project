@@ -4,7 +4,9 @@
   "description": "„this is my stuff!“ ist eine Art virtuelles Fundbüro.  Der User registriert seine Lieblingsgegenstände und generiert einen individuellen QR-Code. Dieser Code wird an dem Gegenstand platziert. Sollte ein Gegenstand verloren gehen gibt es für den Finder durch den QR-Code die Möglichkeit den Eigentümer eines gefundenen Gegenstandes zu kontaktieren und den \"stuff\" zurückzugeben.",
   "main": "index.js",
   "dependencies": {
+    "babel": "^6.23.0",
     "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.4",
     "npm-run-all": "4.1.5",
     "react-scripts": "3.4.1"
   },
