@@ -5,7 +5,9 @@ import items from "./Items";
 const path = require("path");
 const server = express();
 const port = process.env.PORT || 8050;
+const dotenv = require("dotenv");
 // require("dotenv").config();
+dotenv.config();
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json({ extended: true }));
