@@ -4,19 +4,17 @@ import QRCode from 'qrcode.react'
 import { saveAs } from 'file-saver'
 import DeleteButton from './DeleteButton'
 import load from './images/loading.gif'
+import { loadItems } from './services'
 
-export default function Items({ getItems }) {
+export default function Items() {
   const [items, setItems] = useState([])
-  const [itemData, setItemData] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/items')
-      .then(response => response.json())
+    loadItems()
       .then(data => setItems(data.reverse()))
-      .then(items => setItemData(items))
       .then(() => setLoading(false))
-  }, [itemData])
+  }, [])
 
   return (
     <WrapperStyled>
