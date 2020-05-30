@@ -1,20 +1,18 @@
 import React from 'react'
-import GlobalStyles from './GlobalStyle'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Header from './Header'
-import Card from './Card'
+import Items from './Items'
 import Form from './Form'
 import AddButton from './AddButton'
 import LandingPage from './LandingPage'
 
 function App() {
   return (
-    <Router>
-      <GlobalStyles />
+    <>
       <Header />
       <Switch>
         <Route exact path="/">
-          <Card />
+          <Items />
           <AddButton />
         </Route>
         <Route path="/form">
@@ -24,7 +22,7 @@ function App() {
           <LandingPage />
         </Route>
       </Switch>
-    </Router>
+    </>
   )
 }
 

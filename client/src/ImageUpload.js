@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
+import load from './images/loading.gif'
 
 function ImageUploader({ setImageUrl }) {
   const [image, setImage] = useState('')
@@ -40,11 +41,7 @@ function ImageUploader({ setImageUrl }) {
         />
         {loading ? (
           <StyledLoading>
-            <img
-              src="./images/Loading.gif"
-              alt="loading"
-              className="loading-image"
-            />
+            <img src={load} alt="loading" className="loading-image" />
           </StyledLoading>
         ) : (
           <ImgStyle>

@@ -1,6 +1,5 @@
 import React from 'react'
 import Card from './Card'
-import { MemoryRouter as Router } from 'react-router-dom'
 
 export default {
   title: 'Card',
@@ -8,9 +7,5 @@ export default {
 }
 
 export const simple = () => {
-  return (
-    <Router>
-      <Card />
-    </Router>
-  )
+  return <Card />
 }

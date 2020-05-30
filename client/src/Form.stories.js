@@ -1,7 +1,5 @@
 import React from 'react'
 import Form from './Form'
-// import { action } from '@storybook/addon-actions'
-import { MemoryRouter as Router } from 'react-router-dom'
 
 export default {
   title: 'Form',
@@ -9,16 +7,12 @@ export default {
 }
 
 export const simple = () => {
-  return (
-    <Router>
-      <Form />
-    </Router>
-  )
+  return <Form />
 }
 
 export const errors = () => {
   return (
-    <Router>
+    <>
       <label for="item">Wie heißt dein stuff? </label>
       <input
         name="item"
@@ -29,6 +23,6 @@ export const errors = () => {
       />
       {errors.item && <p>insert name!</p>}
       <button type="submit">Submit</button>
-    </Router>
+    </>
   )
 }

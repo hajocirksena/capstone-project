@@ -5,7 +5,7 @@ import ImageUpload from './ImageUpload'
 import { QRCode } from 'react-qr-svg'
 import { Link } from 'react-router-dom'
 
-export default function Formular() {
+export default function Form() {
   const [itemData, setItemData] = useState({
     name: '',
     description: '',
@@ -13,40 +13,12 @@ export default function Formular() {
     image: '',
   })
 
-  function handleChange(event) {
-    setItemData({ ...itemData, [event.target.name]: event.target.value })
-  }
-  function setImageUrl(url) {
-    setItemData({ ...itemData, image: url })
-  }
-  function handleSubmit(event) {
-    event.preventDefault()
-    uploadData(JSON.stringify(itemData))
-  }
-
-  function uploadData(itemData) {
-    const headers = new Headers()
-    headers.append('Content-Type', 'application/json')
-
-    const request = {
-      method: 'POST',
-      headers: headers,
-      body: itemData,
-      redirect: 'follow',
-    }
-
-    fetch('/items/', request)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error))
-  }
-
   return (
     <CardStyled>
-      <Form data-cy="form">
-        <CloseButtonStyle>
+      <FormStyled data-cy="form">
+        <CloseButtonStyled>
           <CloseButton />
-        </CloseButtonStyle>
+        </CloseButtonStyled>
         <LabelStyledName for="name">Wie heißt dein stuff?</LabelStyledName>
         <input
           name="name"
@@ -101,16 +73,44 @@ export default function Formular() {
             registriere deinen stuff
           </Link>
         </SubmitButton>
-      </Form>
+      </FormStyled>
     </CardStyled>
   )
+
+  function handleChange(event) {
+    setItemData({ ...itemData, [event.target.name]: event.target.value })
+  }
+  function setImageUrl(url) {
+    setItemData({ ...itemData, image: url })
+  }
+  function handleSubmit(event) {
+    event.preventDefault()
+    uploadData(JSON.stringify(itemData))
+  }
+
+  function uploadData(itemData) {
+    const headers = new Headers()
+    headers.append('Content-Type', 'application/json')
+
+    const request = {
+      method: 'POST',
+      headers: headers,
+      body: itemData,
+      redirect: 'follow',
+    }
+
+    fetch('/items/', request)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error))
+  }
 }
 
-const Form = styled.form`
+const FormStyled = styled.form`
   display: flex;
   flex-direction: column;
 `
-const CloseButtonStyle = styled.button`
+const CloseButtonStyled = styled.button`
   display: flex;
   justify-content: flex-end;
   margin: 8px;
@@ -138,7 +138,7 @@ const DescriptionInput = styled.textarea`
   margin: 4px;
   border: none;
   box-shadow: 1px 2px 4px grey;
-  height: 18vh;
+  height: 112px;
 `
 
 const ImgSection = styled.div`
@@ -152,7 +152,6 @@ const QRCodeLabel = styled.p`
   text-align: center;
   margin: 2vh 7vw 12px 0;
   width: 112px;
-  height: 1.7em;
 `
 const QRCodeStyled = styled.div`
   width: 112px;
@@ -160,10 +159,10 @@ const QRCodeStyled = styled.div`
 
 const SubmitButton = styled.button`
   display: flex;
-
   font-size: 1em;
-  height: 5vh;
-  width: 87vw;
+  height: 40px;
+  width: 300px;
+  margin: auto;
   border-radius: 12px;
   background: var(--primary);
   border-radius: 12px;
@@ -172,8 +171,9 @@ const SubmitButton = styled.button`
   .Link {
     text-decoration: none;
     color: black;
+    width: 300px;
     margin: auto;
-    padding: 4px;
+    padding: 8px;
     cursor: default;
   }
   :active {
@@ -183,10 +183,8 @@ const SubmitButton = styled.button`
 
 const CardStyled = styled.div`
   position: relative;
-  top: 2%;
   padding: 4px;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  margin: auto;
   width: 90vw;
   height: 87vh;
   border-radius: 4px;

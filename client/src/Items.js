@@ -3,68 +3,49 @@ import styled from 'styled-components/macro'
 import QRCode from 'qrcode.react'
 import { saveAs } from 'file-saver'
 import DeleteButton from './DeleteButton'
+import load from './images/loading.gif'
+import { loadItems } from './services'
 
-export default function Card() {
+export default function Items() {
   const [items, setItems] = useState([])
-  const [itemData, setItemData] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/items')
-      .then(response => response.json())
-      .then(data => setItems(data.reverse()))
-      .then(items => setItemData(items))
+    loadItems()
+      .then((data) => setItems(data.reverse()))
       .then(() => setLoading(false))
-  }, [itemData])
-
-  function deleteCard() {
-    fetch('/items').then(response =>
-      response.json().then(data => setItems(data.reverse()))
-    )
-  }
-
-  function downloadCode() {
-    var svg = document.getElementById('QrCode')
-    svg.toBlob(function(stuff) {
-      saveAs(stuff, 'QrCode.png')
-    })
-  }
+  }, [])
 
   return (
     <WrapperStyled>
       {loading ? (
-        <img
-          src="./images/Loading.gif"
-          alt="loading"
-          className="loading-image"
-        />
+        <img src={load} alt="loading" className="loading-image" />
       ) : (
-        items.map(el => (
-          <div key={el._id}>
-            <CardStyled image={`url(${el.image})`}>
-              <TitleStyled>{el.name}</TitleStyled>
+        items.map((item) => (
+          <div key={item._id}>
+            <CardStyled image={`url(${item.image})`}>
+              <TitleStyled>{item.name}</TitleStyled>
 
-              <TextStyled>{el.description}</TextStyled>
+              <TextStyled>{item.description}</TextStyled>
               <TextSmallStyled>
                 Sollte dein stuff gefunden werden bist du für den Finder per
-                Mail an {el.mail} zu erreichen.
+                Mail an {item.mail} zu erreichen.
               </TextSmallStyled>
               <QRStyled>
                 <QRCode
                   name="QRCode"
                   id="QrCode"
                   alt="QRCode"
-                  value={'https://thisismystuff.herokuapp.com/' + el._id}
+                  value={'/items/' + item._id}
                 />
                 <SaveQrButtonStyled onClick={downloadCode}>
                   save qr
                 </SaveQrButtonStyled>
               </QRStyled>
-              <DeleteButton id={el._id} onDelete={deleteCard} />
-              {/* THIS IS A PLACEHOLDER-LINK BECAUSE ITS IMPOSSIBLE TO SCAN QRCODES IN THE BROWSER */}
+              <DeleteButton id={item._id} onDelete={deleteCard} />
+              {/* // THIS IS A PLACEHOLDER-LINK BECAUSE ITS IMPOSSIBLE TO SCAN QRCODES IN THE BROWSER // */}
               <QRFoundStyled>
-                {/* <a href={'http://localhost:3000/' + el._id}>?</a> */}
-                <a href={'https://thisismystuff.herokuapp.com/' + el._id}>?</a>
+                <a href={'/' + item._id}>?</a>
               </QRFoundStyled>
             </CardStyled>
           </div>
@@ -72,6 +53,16 @@ export default function Card() {
       )}
     </WrapperStyled>
   )
+
+  function deleteCard() {
+    loadItems().then((data) => setItems(data))
+  }
+  function downloadCode() {
+    var svg = document.getElementById('QrCode')
+    svg.toBlob(function (stuff) {
+      saveAs(stuff, 'QrCode.png')
+    })
+  }
 }
 
 /* THIS IS QUICK STYLING FOR THE PLACEHOLDER LINK */
@@ -99,14 +90,14 @@ const SaveQrButtonStyled = styled.button`
   width: 112px;
   padding-bottom: 4px;
   background: var(--primary);
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid darkgray;
   position: absolute;
-  bottom: 2%;
+  bottom: 8px;
   margin: auto;
   box-shadow: 3px 1px 3px lightgray;
   :active {
-    background: var(--secondary);
+    background: var(--tertiary);
   }
 `
 const QRStyled = styled.div`
@@ -116,13 +107,13 @@ const QRStyled = styled.div`
 `
 
 const TextSmallStyled = styled.p`
-  margin: 12px 16vw 0 0;
+  margin: 12px 20px 0 0;
 `
 const TextStyled = styled.p`
   height: 144px;
   overflow: scroll;
   font-size: 1.2em;
-  margin-top: 1vh;
+  margin-top: 12px;
 `
 const TitleStyled = styled.h1`
   font-size: 2.5em;
@@ -145,13 +136,13 @@ const CardStyled = styled.div`
   position: relative;
   top: 5%;
   padding: 10px;
-  margin: 0 5vw;
+  margin: auto 16px;
   background-image: linear-gradient(
       to bottom left,
       rgba(245, 246, 252, 0.8),
       var(--primary)
     ),
-    ${props => props.image};
+    ${(props) => props.image};
   background-size: cover;
   width: 90vw;
   height: 75vh;
