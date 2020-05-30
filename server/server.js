@@ -14,7 +14,7 @@ server.use(express.static(path.join(__dirname, "../client/build/index.html")));
 
 server.use("/items", items);
 
-server.get("/", (request, response) => {
+server.get("/items", (request, response) => {
   response.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
