@@ -1,4 +1,4 @@
-import express from "express";
+import express, { request } from "express";
 import bodyParser from "body-parser";
 import items from "./Items";
 
@@ -13,7 +13,9 @@ server.use(express.json());
 server.use(express.static(path.join(__dirname, "client", "build")));
 
 server.use("/items", items);
-
+server.get("/", (request, response) => {
+  response.send("Hallo Welt");
+});
 server.get("*", (request, response) => {
   response.sendFile(path.join(__dirname, "client/build/index.html"));
 });
