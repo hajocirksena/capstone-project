@@ -27,7 +27,6 @@
   },
   "scripts": {
     "start": "react-scripts start && npm run dev",
-    "start-two": "react-scripts start && npm run dev",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
