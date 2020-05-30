@@ -45,7 +45,7 @@ export default function Items() {
               <DeleteButton id={item._id} onDelete={deleteCard} />
               {/* // THIS IS A PLACEHOLDER-LINK BECAUSE ITS IMPOSSIBLE TO SCAN QRCODES IN THE BROWSER // */}
               <QRFoundStyled>
-                <a href={'/items/' + item._id}>?</a>
+                <a href={'/' + item._id}>?</a>
               </QRFoundStyled>
             </CardStyled>
           </div>

@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import load from './images/loading.gif'
+import { loadFoundItems } from './services'
 
 export default function LandingPage() {
   const url = new URL(document.URL)
-  const id = url.pathname.slice(6)
+  const id = url.pathname.slice(1)
 
   const [item, setItem] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/items/' + id)
-      .then((response) => response.json())
+    loadFoundItems()
       .then((data) => setItem(data))
       .then(() => setLoading(false))
-      .catch((error) => console.log(error))
   }, [id])
 
   return (
