@@ -17,6 +17,9 @@ server.use("/items", items);
 server.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build"));
 });
+server.get("/items/:id", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build"));
+});
 
 const PORT = process.env.PORT || 8050;
 const localAddress = process.env.LOCAL_ADDRESS || "localhost:8050";
