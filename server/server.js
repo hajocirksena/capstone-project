@@ -14,12 +14,12 @@ server.use(express.static(path.join(__dirname, "../client/build/index.html")));
 
 server.use("/items", items);
 
-server.get("*", (request, response) => {
+server.get("/", (request, response) => {
   response.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-const PORT = process.env.PORT || 3000;
-const localAddress = process.env.LOCAL_ADDRESS || "127.0.0.1";
+const PORT = process.env.PORT || 8050;
+const localAddress = process.env.LOCAL_ADDRESS || "localhost:8050";
 server.listen(PORT, localAddress, () => {
   console.log(`Our app is running on port ${PORT}`);
 });
