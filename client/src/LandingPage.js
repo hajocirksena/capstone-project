@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import load from './images/loading.gif'
-import { loadFoundItems } from './services'
 
 export default function LandingPage() {
   const url = new URL(document.URL)
@@ -9,12 +8,6 @@ export default function LandingPage() {
 
   const [item, setItem] = useState([])
   const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    loadFoundItems()
-      .then((data) => setItem(data.reverse()))
-      .then(() => setLoading(false))
-  }, [])
 
   useEffect(() => {
     fetch('/items/' + id)
