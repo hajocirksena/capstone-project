@@ -12,7 +12,7 @@ export default function Items() {
 
   useEffect(() => {
     loadItems()
-      .then(data => setItems(data.reverse()))
+      .then((data) => setItems(data.reverse()))
       .then(() => setLoading(false))
   }, [])
 
@@ -21,7 +21,7 @@ export default function Items() {
       {loading ? (
         <img src={load} alt="loading" className="loading-image" />
       ) : (
-        items.map(item => (
+        items.map((item) => (
           <div key={item._id}>
             <CardStyled image={`url(${item.image})`}>
               <TitleStyled>{item.name}</TitleStyled>
@@ -36,7 +36,7 @@ export default function Items() {
                   name="QRCode"
                   id="QrCode"
                   alt="QRCode"
-                  value={'/' + item._id}
+                  value={'/items/' + item._id}
                 />
                 <SaveQrButtonStyled onClick={downloadCode}>
                   save qr
@@ -54,14 +54,14 @@ export default function Items() {
     </WrapperStyled>
   )
   function deleteCard() {
-    fetch('/items').then(response =>
-      response.json().then(data => setItems(data.reverse()))
+    fetch('/items').then((response) =>
+      response.json().then((data) => setItems(data.reverse()))
     )
   }
 
   function downloadCode() {
     var svg = document.getElementById('QrCode')
-    svg.toBlob(function(stuff) {
+    svg.toBlob(function (stuff) {
       saveAs(stuff, 'QrCode.png')
     })
   }
@@ -144,7 +144,7 @@ const CardStyled = styled.div`
       rgba(245, 246, 252, 0.8),
       var(--primary)
     ),
-    ${props => props.image};
+    ${(props) => props.image};
   background-size: cover;
   width: 90vw;
   height: 75vh;
