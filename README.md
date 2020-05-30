@@ -8,17 +8,18 @@ Sollte ein Gegenstand verloren gehen gibt es für den Finder durch den QR-Code d
 
 - React
 - React Router
+- QRCode.React
 - Styled Components
 - Node JS
 - Mongo DB
 - Express
-- QRCode.React
+- Cypress
+
 
 ## Install
 
-npm i (/capstone-project & /client & /server )
+npm i 
 
 ```run it:```
 
-npm start (/client & /server)
-
+npm start 
