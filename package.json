@@ -11,7 +11,8 @@
     "@babel/node": "^7.10.1",
     "@babel/core": "7.7.4",
     "@babel/cli": "^7.8.4",
-    "@babel/preset-env": "7.7.6"
+    "@babel/preset-env": "7.7.6",
+    "mongoose": "5.8.1"
   },
   "scripts": {
     "start": "npm-run-all --parallel client server",
