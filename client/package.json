@@ -19,7 +19,11 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.0",
-    "babel-plugin-macros": "^2.8.0"
+    "babel-plugin-macros": "^2.8.0",
+    "@babel/node": "^7.10.1",
+    "@babel/core": "7.7.4",
+    "@babel/cli": "^7.8.4",
+    "@babel/preset-env": "7.7.6"
   },
   "scripts": {
     "start": "react-scripts start && npm run dev",
@@ -79,8 +83,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/node": "^7.10.1"
   }
 }

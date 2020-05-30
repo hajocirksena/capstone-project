@@ -11,6 +11,7 @@
     "@babel/core": "7.7.4",
     "@babel/cli": "^7.8.4",
     "@babel/preset-env": "7.7.6",
+    "@babel/node": "^7.10.1",
     "cors": "2.8.5",
     "dotenv": "^8.2.0",
     "env-cmd": "^10.0.1",
@@ -35,8 +36,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/node": "^7.10.1"
   }
 }
