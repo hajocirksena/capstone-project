@@ -21,9 +21,9 @@ server.get("/", (req, res) => {
   res.sendFile(
     path.join(
       __dirname,
-      "../client",
-      "../client/build",
-      "../client/build/index.html"
+      "./client",
+      "./client/build",
+      "./client/build/index.html"
     )
   );
 });
