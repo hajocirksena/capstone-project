@@ -10,7 +10,7 @@ const server = express();
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json({ extended: true }));
 server.use(express.json());
-server.use(express.static(path.join(__dirname, "../client/build/index.html")));
+server.use(express.static(path.join(__dirname, "../client/build")));
 
 server.use("/items", items);
 
