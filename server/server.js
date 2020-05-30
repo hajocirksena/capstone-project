@@ -20,7 +20,8 @@ server.get("*", (request, response) => {
   response.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 
-const { PORT = 3000, LOCAL_ADDRESS = "0.0.0.0" } = process.env;
-server.listen(PORT, LOCAL_ADDRESS, () => {
-  console.log("server listening at", PORT);
+const PORT = process.env.PORT || 3000;
+const localAddress = process.env.LOCAL_ADDRESS || "127.0.0.1";
+server.listen(PORT, localAddress, () => {
+  console.log(`Our app is running on port ${PORT}`);
 });
