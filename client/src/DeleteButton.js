@@ -3,6 +3,18 @@ import styled from 'styled-components/macro'
 import trash from './images/trash.png'
 
 export default function DeleteButton({ id, onDelete }) {
+  return (
+    <DeleteButtonStyled
+      data-cy="DeleteButton"
+      onClick={() => {
+        window.confirm('Möchtest du wirklich deinen stuff löschen?') &&
+          deleteItem(id)
+      }}
+    >
+      <img src={trash} alt="bin" />
+    </DeleteButtonStyled>
+  )
+
   function deleteItem() {
     const urlencoded = new URLSearchParams()
     urlencoded.append('_id', id)
@@ -16,24 +28,12 @@ export default function DeleteButton({ id, onDelete }) {
     }
 
     fetch('/items/' + id, request)
-      .then(response => response.text())
-      .then(result => {
+      .then((response) => response.text())
+      .then((result) => {
         onDelete()
       })
-      .catch(error => console.log('error', error))
+      .catch((error) => console.log('error', error))
   }
-
-  return (
-    <DeleteButtonStyled
-      data-cy="DeleteButton"
-      onClick={() => {
-        window.confirm('Möchtest du wirklich deinen stuff löschen?') &&
-          deleteItem(id)
-      }}
-    >
-      <img src={trash} alt="bin" className="bin" />
-    </DeleteButtonStyled>
-  )
 }
 
 const DeleteButtonStyled = styled.button`

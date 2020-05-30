@@ -53,12 +53,10 @@ export default function Items() {
       )}
     </WrapperStyled>
   )
-  function deleteCard() {
-    fetch('/items').then((response) =>
-      response.json().then((data) => setItems(data.reverse()))
-    )
-  }
 
+  function deleteCard() {
+    loadItems().then((data) => setItems(data))
+  }
   function downloadCode() {
     var svg = document.getElementById('QrCode')
     svg.toBlob(function (stuff) {
