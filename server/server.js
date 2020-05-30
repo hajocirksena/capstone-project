@@ -1,7 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
 import items from "./Items";
-import cors from "cors";
 
 const path = require("path");
 const server = express();
@@ -12,7 +11,6 @@ dotenv.config();
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json({ extended: true }));
 server.use(express.json());
-server.use(cors());
 server.use(express.static(path.join(__dirname, "client", "build")));
 
 server.use("/items", items);
