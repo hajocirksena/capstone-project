@@ -15,7 +15,7 @@ server.use(express.static(path.join(__dirname, "../client/build/index.html")));
 server.use("/items", items);
 
 server.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build"));
+  res.sendFile(path.join(__dirname, "../client/build"));
 });
 
 const PORT = process.env.PORT || 8050;
