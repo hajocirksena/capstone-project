@@ -18,7 +18,7 @@ server.use("/items", items);
 //   res.sendFile(path.join(__dirname, "../client/build.index.html"));
 // });
 server.get("/", (req, res) => {
-  res.sendFile(path.join("../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../client", "../client/build"));
 });
 
 const PORT = process.env.PORT || 8050;
