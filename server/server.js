@@ -6,7 +6,6 @@ const dotenv = require("dotenv");
 dotenv.config();
 const path = require("path");
 const server = express();
-const port = process.env.PORT || 8050;
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json({ extended: true }));
@@ -19,4 +18,8 @@ server.get("*", (request, response) => {
   response.sendFile(path.join(__dirname, "client/build/index.html"));
 });
 
-server.listen(port || 8050);
+const { PORT = 3000, LOCAL_ADDRESS = "0.0.0.0" } = process.env;
+server.listen(PORT, LOCAL_ADDRESS, () => {
+  const address = server.address();
+  console.log("server listening at", address);
+});
