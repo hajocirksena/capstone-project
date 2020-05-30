@@ -24,13 +24,13 @@ const items = mongoose.model("Item", {
 
 router.get("/", (request, response) => {
   items.find().then((data) => {
-    response.json(data).catch(console.log("error"));
+    response.json(data);
   });
 });
 
 router.get("/:id", (request, response) => {
   items.findById(request.params.id).then((data) => {
-    response.json(data).catch(console.log("error"));
+    response.json(data);
   });
 });
 

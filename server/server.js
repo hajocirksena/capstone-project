@@ -16,8 +16,17 @@ server.use(express.static(path.join(__dirname, "client", "build")));
 
 server.use("/items", items);
 
-server.get("*", (request, response) => {
-  response.sendFile(path.join(__dirname, "client/build/index.html"));
-});
+if (process.env.NODE_ENV === "production") {
+  // Serve any static files
+  server.use(express.static(path.join(__dirname, "client/build")));
+
+  server.get("*", (request, response) => {
+    response.sendFile(path.join(__dirname, "client/build/index.html"));
+  });
+}
+
+// server.get("*", (request, response) => {
+//   response.sendFile(path.join(__dirname, "client/build/index.html"));
+// });
 
 server.listen(port || 8050);
