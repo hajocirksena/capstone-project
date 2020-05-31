@@ -1,10 +1,17 @@
 # this is my stuff
 
-„this is my stuff!“ ist eine Art virtuelles Fundbüro. 
-Der User registriert seine Lieblingsgegenstände und generiert einen individuellen QR-Code. Dieser Code wird an dem Gegenstand platziert.
-Sollte ein Gegenstand verloren gehen gibt es für den Finder durch den QR-Code die Möglichkeit den Eigentümer eines gefundenen Gegenstandes zu kontaktieren und den "stuff" zurückzugeben.
+„this is my stuff!“ is a digital lost-and-found office.
+The user registers his favorite items and generates an individual QR code. This code then gets placed on the item.
+If an item is lost, the finder can use the QR code to contact the owner of a found item and return the "stuff".
 
-## Technologien
+![image](https://drive.google.com/uc?export=view&id=1MsqOLFYjRPqRMF1W6eCn1bp3mK5J-ff4 )
+
+## Preview:
+
+Take a look at [this is my stuff](https://thisismystuff.herokuapp.com) online and ready to go...
+
+
+## Tech stack & dependencies
 
 - React
 - React Router
@@ -13,13 +20,21 @@ Sollte ein Gegenstand verloren gehen gibt es für den Finder durch den QR-Code d
 - Node JS
 - Mongo DB
 - Express
-- Cypress
+- jest
+- react-testing-library
+- cypress
 
 
 ## Install
+
+clone this repository
 
 npm i 
 
 ```run it:```
 
 npm start 
+
+## Special Thanks
+
+This app was created as a capstone-project at [neuefische](www.neuefische.de) webdevelopment bootcamp in Hamburg. Without the coaches and of course my classmates in w2 2020 this wouldn't have been possible. Thank you!
