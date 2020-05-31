@@ -4,7 +4,10 @@
 The user registers his favorite items and generates an individual QR code. This code then gets placed on the item.
 If an item is lost, the finder can use the QR code to contact the owner of a found item and return the "stuff".
 
-![image](https://drive.google.com/uc?export=view&id=1MsqOLFYjRPqRMF1W6eCn1bp3mK5J-ff4 )
+![image](https://drive.google.com/uc?export=view&id=1MsqOLFYjRPqRMF1W6eCn1bp3mK5J-ff4)
+<p align="center">
+<img height="400" src="https://drive.google.com/uc?export=view&id=1Se1W5IOVvRaoIfKJTs_Sm39ZqIOul_3g"><img height="400" src="https://drive.google.com/uc?export=view&id=12NVnM4PLiLYTnQ83w3_MG7hjtLtldT2i"> <img height="400" src="https://drive.google.com/uc?export=view&id=1DXnT3rvhkczXbcpYIyRXBR61xK9Sshy8"><img height="400" src="https://drive.google.com/uc?export=view&id=1e2FLe-8PpeuEXTzBGNzqBzDw3daMpxcQ">
+</p>
 
 ## Preview:
 
