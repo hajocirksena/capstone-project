@@ -27,13 +27,12 @@ Take a look at [this is my stuff](https://thisismystuff.herokuapp.com) online an
 
 ## Install
 
-clone this repository
+ - clone this repository
+ - install ->
+ - ```npm i```
+ - run it ->
+ - ```npm start```
 
-npm i 
-
-```run it:```
-
-npm start 
 
 ## Special Thanks
 
