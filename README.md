@@ -8,9 +8,10 @@ Please switch your browser into Iphone-6/7/8-view as this app is designed for mo
 
 
 <p align="center">
+ <img height="400" src="https://res.cloudinary.com/thisismystuff/image/upload/v1591019793/mtv7vpwcycdbs0augbyr.png">
  <img height="400" src="https://res.cloudinary.com/thisismystuff/image/upload/v1591019833/pllrleinbzfymkandg4r.png">
  <img height="400" src="https://res.cloudinary.com/thisismystuff/image/upload/v1591019812/nenkb9tedlaw6pdko9zs.png">
- <img height="400" src="https://res.cloudinary.com/thisismystuff/image/upload/v1591019793/mtv7vpwcycdbs0augbyr.png">
+ <img height="400" src="https://res.cloudinary.com/thisismystuff/image/upload/v1591019845/fjkmnfwed3zzj0npldpb.png">
 </p>
 
 ## Preview:
