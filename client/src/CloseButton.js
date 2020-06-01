@@ -21,6 +21,7 @@ const Button = styled.button`
   border: none;
   img {
     width: 30px;
+    border-radius: 50px;
     cursor: default;
     :active {
       background: var(--primary);
