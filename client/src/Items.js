@@ -95,7 +95,6 @@ const SaveQrButtonStyled = styled.button`
   border: 1px solid darkgray;
   position: absolute;
   bottom: 8px;
-  margin: auto;
   box-shadow: 3px 1px 3px lightgray;
   :active {
     background: var(--tertiary);

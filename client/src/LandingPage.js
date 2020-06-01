@@ -4,9 +4,6 @@ import load from './images/loading.gif'
 import { loadFoundItems } from './services'
 
 export default function LandingPage() {
-  const url = new URL(document.URL)
-  const id = url.pathname.slice(6)
-
   const [item, setItem] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -14,7 +11,7 @@ export default function LandingPage() {
     loadFoundItems()
       .then((data) => setItem(data))
       .then(() => setLoading(false))
-  }, [id])
+  }, [])
 
   return (
     <Wrapper>
