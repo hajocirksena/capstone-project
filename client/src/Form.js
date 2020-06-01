@@ -113,7 +113,7 @@ const FormStyled = styled.form`
 const CloseButtonStyled = styled.button`
   display: flex;
   justify-content: flex-end;
-  margin: 8px 100px;
+  margin: 8px;
   border: none;
   background: var(--secondary);
 `
