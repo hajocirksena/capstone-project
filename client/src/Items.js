@@ -36,16 +36,17 @@ export default function Items() {
                   name="QRCode"
                   id="QrCode"
                   alt="QRCode"
-                  value={'/items/' + item._id}
+                  value={'thisismystuff.herokuapp.com/items/' + item._id}
                 />
                 <SaveQrButtonStyled onClick={downloadCode}>
                   save qr
                 </SaveQrButtonStyled>
               </QRStyled>
               <DeleteButton id={item._id} onDelete={deleteCard} />
-              {/* // THIS IS A PLACEHOLDER-LINK BECAUSE ITS IMPOSSIBLE TO SCAN QRCODES IN THE BROWSER // */}
+
+              {/*  THIS IS A PLACEHOLDER-LINK BECAUSE ITS IMPOSSIBLE TO SCAN QRCODES IN THE BROWSER  */}
               <QRFoundStyled>
-                <a href={'/' + item._id}>?</a>
+                <a href={'items/' + item._id}>?</a>
               </QRFoundStyled>
             </CardStyled>
           </div>

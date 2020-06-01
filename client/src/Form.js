@@ -100,9 +100,9 @@ export default function Form() {
     }
 
     fetch('/items/', request)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error))
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log('error', error))
   }
 }
 

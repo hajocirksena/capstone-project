@@ -15,12 +15,12 @@ export default function CloseButton() {
 
 const Button = styled.button`
   background: var(--secondary);
-  width: 30px;
+  margin-right: -10px;
+  width: 44px;
   height: 30px;
   border: none;
   img {
     width: 30px;
-    height: auto;
     border-radius: 50px;
     cursor: default;
     :active {

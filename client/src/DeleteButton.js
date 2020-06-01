@@ -11,7 +11,7 @@ export default function DeleteButton({ id, onDelete }) {
           deleteItem(id)
       }}
     >
-      <img src={trash} alt="bin" />
+      <img src={trash} alt="bin" className="bin" />
     </DeleteButtonStyled>
   )
 
