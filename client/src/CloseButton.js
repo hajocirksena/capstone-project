@@ -16,7 +16,7 @@ export default function CloseButton() {
 const Button = styled.button`
   background: var(--secondary);
   margin-right: -10px;
-  width: 40px;
+  width: 44px;
   height: 30px;
   border: none;
   img {
