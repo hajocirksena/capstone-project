@@ -189,4 +189,5 @@ const CardStyled = styled.div`
   height: 87vh;
   border-radius: 4px;
   box-shadow: 10px 5px 15px darkgray;
+  overflow: scroll;
 `
