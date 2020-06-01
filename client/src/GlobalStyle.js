@@ -9,6 +9,7 @@ export default createGlobalStyle`
     body {
         font-family: sans-serif;
         height: 100vh;
+        width:100vw;
     }
 
     #root {

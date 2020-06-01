@@ -100,9 +100,9 @@ export default function Form() {
     }
 
     fetch('/items/', request)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error))
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log('error', error))
   }
 }
 
@@ -113,7 +113,7 @@ const FormStyled = styled.form`
 const CloseButtonStyled = styled.button`
   display: flex;
   justify-content: flex-end;
-  margin: 8px;
+  margin: 8px 16px;
   border: none;
   background: var(--secondary);
 `
