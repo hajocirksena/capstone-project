@@ -5,7 +5,7 @@ import { loadFoundItems } from './services'
 
 export default function LandingPage() {
   const url = new URL(document.URL)
-  const id = url.pathname.slice(1)
+  const id = url.pathname.slice(6)
 
   const [item, setItem] = useState([])
   const [loading, setLoading] = useState(true)
