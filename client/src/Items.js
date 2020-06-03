@@ -36,7 +36,7 @@ export default function Items() {
                   name="QRCode"
                   id="QrCode"
                   alt="QRCode"
-                  value={'/' + item._id}
+                  value={'https://thisismystuff.herokuapp.com/' + item._id}
                 />
                 <SaveQrButtonStyled onClick={downloadCode}>
                   save qr
